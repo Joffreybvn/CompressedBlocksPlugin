@@ -1,0 +1,6 @@
+name: CompressedBlocks
+version: 1.0
+author: Joffrey4 aka NycoDiValones
+main: io.github.joffrey4.compressedblocks.Main
+website: https://github.com/Joffrey4
+description: Save space in your chests by compressing your blocks !
