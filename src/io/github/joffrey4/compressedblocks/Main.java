@@ -2,7 +2,6 @@ package io.github.joffrey4.compressedblocks;
 
 import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
 import io.github.joffrey4.compressedblocks.recipes.RecipesRegistry;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -32,18 +31,25 @@ public class Main extends JavaPlugin implements Listener {
     public void onCraft(PrepareItemCraftEvent event) {
 
         if (event.getRecipe() instanceof ShapedRecipe) {
-
             ItemStack[] items = event.getInventory().getMatrix();
-            if (areNull(items[0], items[1], items[2], items[3], items[5], items[6], items[7], items[8])) {
+
+            if ((items.length == 9 && areNull(items[0], items[1], items[2], items[3], items[5], items[6], items[7], items[8]))
+                    || items.length == 4 && areNull(items[1], items[2], items[3])) {
 
                 if (items[4].hasItemMeta()) {
 
-                    if(!items[4].getItemMeta().getDisplayName().contains("Compressed")) {
+                    if (!items[4].getItemMeta().getDisplayName().contains("Compressed")) {
                         event.getInventory().setResult(new ItemStack(Material.AIR));
                     }
 
                 } else {
                     event.getInventory().setResult(new ItemStack(Material.AIR));
+                }
+            } else {
+                for (ItemStack item : items) {
+                    if (item != null && item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed")) {
+                        event.getInventory().setResult(new ItemStack(Material.AIR));
+                    }
                 }
             }
         }
