@@ -6,51 +6,50 @@ import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
-import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.material.MaterialData;
 
 public class RecipesRegistry {
 
-    /*
-    // Stone declaration
-    public static ShapedRecipe stoneCompressing;
-    private static ShapelessRecipe stoneUncompressing;
-    */
+    // Granite Recipes declaration
+    public static ShapedRecipe graniteCompressing;
+    public static ShapedRecipe graniteUncompressing;
 
-    // Cobblestone declaration
+    // Diorite Recipes declaration
+    public static ShapedRecipe dioriteCompressing;
+    public static ShapedRecipe dioriteUncompressing;
+
+    // Andesite Recipes declaration
+    public static ShapedRecipe andesiteCompressing;
+    public static ShapedRecipe andesiteUncompressing;
+
+    // Cobblestone Recipes declaration
     public static ShapedRecipe cobblestoneCompressing;
     public static ShapedRecipe cobblestoneUncompressing;
 
     public static void init() {
-
         Server server = Bukkit.getServer();
 
-        /*
-        // Stone compressing and uncompressing
-        stoneCompressing = Compressing(BlockRegistry.compressedStone, new MaterialData(Material.STONE, (byte) 0));
-        stoneUncompressing = UnCompressing(new ItemStack(Material.STONE), BlockRegistry.compressedStone.getData());
-        server.addRecipe(stoneCompressing);
-        server.addRecipe(stoneUncompressing);
+        // Granite compressing and uncompressing
+        server.addRecipe(graniteCompressing = Compressing(BlockRegistry.compressedGranite, Material.STONE, 1));
+        server.addRecipe(graniteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 1), BlockRegistry.compressedGranite.getData()));
 
+        // Diorite compressing and uncompressing
+        server.addRecipe(dioriteCompressing = Compressing(BlockRegistry.compressedDiorite, Material.STONE, 3));
+        server.addRecipe(dioriteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 3), BlockRegistry.compressedDiorite.getData()));
 
-        server.addRecipe(Compressing(BlockRegistry.compressedGranite, new MaterialData(Material.STONE, (byte) 1)));
-        server.addRecipe(Compressing(BlockRegistry.compressedDiorite, new MaterialData(Material.STONE, (byte) 3)));
-        server.addRecipe(Compressing(BlockRegistry.compressedAndesite, new MaterialData(Material.STONE, (byte) 5)));
-        */
+        // Andesite compressing and uncompressing
+        server.addRecipe(andesiteCompressing = Compressing(BlockRegistry.compressedAndesite, Material.STONE, 5));
+        server.addRecipe(andesiteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 5), BlockRegistry.compressedAndesite.getData()));
 
         // Cobblestone compressing and uncompressing
-        cobblestoneCompressing = Compressing(BlockRegistry.compressedCobblestone, new MaterialData(Material.COBBLESTONE));
-        cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), BlockRegistry.compressedCobblestone.getData());
-
-        //cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), BlockRegistry.compressedCobblestone.getData());
-        server.addRecipe(cobblestoneCompressing);
-        server.addRecipe(cobblestoneUncompressing);
+        server.addRecipe(cobblestoneCompressing = Compressing(BlockRegistry.compressedCobblestone, Material.COBBLESTONE, 0));
+        server.addRecipe(cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), BlockRegistry.compressedCobblestone.getData()));
     }
 
-    private static ShapedRecipe Compressing(ItemStack itemResult, MaterialData ingredient) {
+    private static ShapedRecipe Compressing(ItemStack itemResult, Material ingredient, int meta) {
         ShapedRecipe shapedRecipe = new ShapedRecipe(itemResult);
         shapedRecipe.shape("III", "III", "III");
-        shapedRecipe.setIngredient('I', ingredient);
+        shapedRecipe.setIngredient('I', ingredient, meta);
         return shapedRecipe;
     }
 
@@ -58,15 +57,6 @@ public class RecipesRegistry {
         ShapedRecipe shapedRecipe = new ShapedRecipe(itemResult);
         shapedRecipe.shape("   ", " I ", "   ");
         shapedRecipe.setIngredient('I', ingredient);
-        //shapedRecipe.setIngredient('A', Material.AIR);
         return shapedRecipe;
     }
-
-    /*
-    private static ShapelessRecipe UnCompressing(ItemStack itemResult, MaterialData ingredient) {
-        ShapelessRecipe shapelessRecipe = new ShapelessRecipe(itemResult);
-        shapelessRecipe.addIngredient(1, ingredient);
-        return shapelessRecipe;
-    }
-    */
 }
