@@ -2,10 +2,12 @@ package io.github.joffrey4.compressedblocks;
 
 import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
 import io.github.joffrey4.compressedblocks.recipes.RecipesRegistry;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -28,14 +30,14 @@ public class Main extends JavaPlugin implements Listener {
     }
 
     @EventHandler
+    // Implements the compressed blocks in crafts
     public void onCraft(PrepareItemCraftEvent event) {
 
         // FIRST STEP: Override the default craft with the ones of this plugin
         if (event.getRecipe() instanceof ShapedRecipe) {
             ItemStack[] items = event.getInventory().getMatrix();
 
-            if ((items.length == 9 && areNull(items[0], items[1], items[2], items[3], items[5], items[6], items[7], items[8]))
-                    || items.length == 4 && areNull(items[1], items[2], items[3])) {
+            if (items.length == 9 && areNull(items[0], items[1], items[2], items[3], items[5], items[6], items[7], items[8])) {
 
                 if (items[4].hasItemMeta()) {
 
@@ -53,6 +55,27 @@ public class Main extends JavaPlugin implements Listener {
                         event.getInventory().setResult(new ItemStack(Material.WOOD, 4, items[4].getDurability()));
                     } else if (items[4].getType() == Material.LOG_2) {
                         event.getInventory().setResult(new ItemStack(Material.WOOD, 4, (short) (4 + items[4].getDurability())));
+                    } else {
+                        event.getInventory().setResult(new ItemStack(Material.AIR));
+                    }
+                }
+            } else if (items.length == 4 && areNull(items[0], items[1], items[2])) {
+
+                if (items[3].hasItemMeta()) {
+
+                    if (!items[3].getItemMeta().getDisplayName().contains("Compressed")) {
+                        event.getInventory().setResult(new ItemStack(Material.AIR));
+                    }
+                } else {
+                    // SECOND STEP: Re-insert the common craft
+                    if (items[3].getType() == Material.STONE) {
+                        event.getInventory().setResult(new ItemStack(Material.STONE_BUTTON));
+                    } else if (items[3].getType() == Material.WOOD) {
+                        event.getInventory().setResult(new ItemStack(Material.WOOD_BUTTON));
+                    } else if (items[3].getType() == Material.LOG) {
+                        event.getInventory().setResult(new ItemStack(Material.WOOD, 4, items[3].getDurability()));
+                    } else if (items[3].getType() == Material.LOG_2) {
+                        event.getInventory().setResult(new ItemStack(Material.WOOD, 4, (short) (4 + items[3].getDurability())));
                     } else {
                         event.getInventory().setResult(new ItemStack(Material.AIR));
                     }
@@ -76,6 +99,16 @@ public class Main extends JavaPlugin implements Listener {
         }
         return true;
     }
+
+    @EventHandler
+    // Avoid placing a compressed block on the ground
+    public void onPlace(BlockPlaceEvent event) {
+        if (event.getItemInHand().getItemMeta().getDisplayName().contains("Compressed")) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(ChatColor.RED + "You can not place a compressed block in the world !");
+        }
+    }
+
 
     @Override
     public void onDisable() {
