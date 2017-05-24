@@ -35,7 +35,7 @@ public class BlockRegistry {
 
         // Set new name
         ItemMeta meta = block.getItemMeta();
-        meta.setDisplayName(ChatColor.GRAY + "Compressed " + name);
+        meta.setDisplayName("Compressed Cobblestone");
 
         // Set a lore
         ArrayList<String> lore = new ArrayList<String>();

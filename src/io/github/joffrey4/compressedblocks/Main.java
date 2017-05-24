@@ -4,6 +4,7 @@ import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
 import io.github.joffrey4.compressedblocks.recipes.RecipesRegistry;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
@@ -29,11 +30,15 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
     }
 
+    /*
     @EventHandler
     public void onCraft(CraftItemEvent event) {
         if (event.getInventory() instanceof CraftingInventory){
             CraftingInventory inv = (CraftingInventory) event.getInventory();
-            System.out.println("inv open");
+            System.out.println(event.getRecipe());
+            System.out.println(RecipesRegistry.cobblestoneUncompressing);
+            System.out.println(event.getRecipe().equals(RecipesRegistry.cobblestoneUncompressing));
+            System.out.println("----------------------------------------------------------------");
 
             if(event.getRecipe().equals(RecipesRegistry.cobblestoneUncompressing)){
                 ItemStack item = inv.getMatrix()[4];//get the middle item in the bench, which is the helmet
@@ -51,6 +56,26 @@ public class Main extends JavaPlugin implements Listener {
                 //send the player a message to make it more realistic here. For my wizardry server I use: 'One of thee items used was incorrect, and unbalanced the energy. The death block hath been destroyed'
                 event.setCancelled(true);
             }
+        }
+    }
+    */
+
+    @EventHandler
+    public void onCraft(CraftItemEvent event) {
+        if (event.getInventory() instanceof CraftingInventory){
+            CraftingInventory inv = (CraftingInventory) event.getInventory();
+            System.out.println(event.getRecipe().getResult().hasItemMeta());
+
+            if(event.getRecipe().getResult().hasItemMeta()){
+                ItemStack item = event.getRecipe().getResult();
+                System.out.println(item.getItemMeta().getDisplayName().equals("Compressed Cobblestone"));
+
+                if (item.getItemMeta().getDisplayName().equals("Compressed Cobblestone")) {
+                    System.out.println("craft ok");
+                    return;
+                }
+            }
+            event.setCancelled(true);
         }
     }
 

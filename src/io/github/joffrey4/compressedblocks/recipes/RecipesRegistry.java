@@ -40,7 +40,7 @@ public class RecipesRegistry {
 
         // Cobblestone compressing and uncompressing
         cobblestoneCompressing = Compressing(BlockRegistry.compressedCobblestone, new MaterialData(Material.COBBLESTONE));
-        cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), new MaterialData(Material.COBBLESTONE));
+        cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), BlockRegistry.compressedCobblestone.getData());
 
         //cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), BlockRegistry.compressedCobblestone.getData());
         server.addRecipe(cobblestoneCompressing);
@@ -49,16 +49,16 @@ public class RecipesRegistry {
 
     private static ShapedRecipe Compressing(ItemStack itemResult, MaterialData ingredient) {
         ShapedRecipe shapedRecipe = new ShapedRecipe(itemResult);
-        shapedRecipe.shape("###", "###", "###");
-        shapedRecipe.setIngredient('#', ingredient);
+        shapedRecipe.shape("III", "III", "III");
+        shapedRecipe.setIngredient('I', ingredient);
         return shapedRecipe;
     }
 
     private static ShapedRecipe UnCompressing(ItemStack itemResult, MaterialData ingredient) {
         ShapedRecipe shapedRecipe = new ShapedRecipe(itemResult);
-        shapedRecipe.shape("AAA", "A#A", "AAA");
-        shapedRecipe.setIngredient('#', ingredient);
-        shapedRecipe.setIngredient('A', Material.AIR);
+        shapedRecipe.shape("   ", " I ", "   ");
+        shapedRecipe.setIngredient('I', ingredient);
+        //shapedRecipe.setIngredient('A', Material.AIR);
         return shapedRecipe;
     }
 
