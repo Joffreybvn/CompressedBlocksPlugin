@@ -31,6 +31,7 @@ public class BlockRegistry {
     public static ItemStack compressedRedSand;
 
     // Compressed Stone Blocks
+    public static ItemStack compressedStone;
     public static ItemStack compressedGranite;
     public static ItemStack compressedDiorite;
     public static ItemStack compressedAndesite;
@@ -65,7 +66,7 @@ public class BlockRegistry {
         compressedRedSand = compressedBlock(Material.SAND, 1, "Red Sand");
 
         // Compressed Stone Blocks
-        // TODO: compressed Stone -> Craft override for Stone Button
+        compressedStone = compressedBlock(Material.STONE, 0, "Stone");
         compressedGranite = compressedBlock(Material.STONE, 1, "Granite");
         compressedDiorite = compressedBlock(Material.STONE, 3, "Diorite");
         compressedAndesite = compressedBlock(Material.STONE, 5, "Andesite");

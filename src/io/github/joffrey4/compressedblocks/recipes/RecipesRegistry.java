@@ -59,6 +59,10 @@ public class RecipesRegistry {
     public static ShapedRecipe redSandCompressing;
     public static ShapedRecipe redSandUncompressing;
 
+    // Stone Recipes declaration
+    public static ShapedRecipe stoneCompressing;
+    public static ShapedRecipe stoneUncompressing;
+
     // Granite Recipes declaration
     public static ShapedRecipe graniteCompressing;
     public static ShapedRecipe graniteUncompressing;
@@ -159,11 +163,15 @@ public class RecipesRegistry {
 
         // Red Sand compressing and uncompressing
         server.addRecipe(redSandCompressing = Compressing(BlockRegistry.compressedRedSand, Material.SAND, 1));
-        server.addRecipe(redSandCompressing = UnCompressing(new ItemStack(Material.SAND, 9, (short) 1), BlockRegistry.compressedRedSand.getData()));
+        server.addRecipe(redSandUncompressing = UnCompressing(new ItemStack(Material.SAND, 9, (short) 1), BlockRegistry.compressedRedSand.getData()));
 
         /*************************************************************************************************
          * Compressed STONE Blocks - Recipes                                                             *
          *************************************************************************************************/
+
+        // Stone compressing and uncompressing
+        server.addRecipe(stoneCompressing = Compressing(BlockRegistry.compressedStone, Material.STONE, 0));
+        server.addRecipe(stoneUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 0), BlockRegistry.compressedStone.getData()));
 
         // Granite compressing and uncompressing
         server.addRecipe(graniteCompressing = Compressing(BlockRegistry.compressedGranite, Material.STONE, 1));

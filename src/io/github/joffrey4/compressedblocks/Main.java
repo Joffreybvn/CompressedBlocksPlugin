@@ -30,6 +30,7 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onCraft(PrepareItemCraftEvent event) {
 
+        // FIRST STEP: Override the default craft with the ones of this plugin
         if (event.getRecipe() instanceof ShapedRecipe) {
             ItemStack[] items = event.getInventory().getMatrix();
 
@@ -43,9 +44,21 @@ public class Main extends JavaPlugin implements Listener {
                     }
 
                 } else {
-                    event.getInventory().setResult(new ItemStack(Material.AIR));
+                    // SECOND STEP: Re-insert the common craft
+                    if (items[4].getType() == Material.STONE) {
+                        event.getInventory().setResult(new ItemStack(Material.STONE_BUTTON));
+                    } else if (items[4].getType() == Material.WOOD) {
+                        event.getInventory().setResult(new ItemStack(Material.WOOD_BUTTON));
+                    } else if (items[4].getType() == Material.LOG) {
+                        event.getInventory().setResult(new ItemStack(Material.WOOD, 4, items[4].getDurability()));
+                    } else if (items[4].getType() == Material.LOG_2) {
+                        event.getInventory().setResult(new ItemStack(Material.WOOD, 4, (short) (4 + items[4].getDurability())));
+                    } else {
+                        event.getInventory().setResult(new ItemStack(Material.AIR));
+                    }
                 }
             } else {
+                // THIRD STEP: Avoid using the compressed blocks in common crafts
                 for (ItemStack item : items) {
                     if (item != null && item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed")) {
                         event.getInventory().setResult(new ItemStack(Material.AIR));
@@ -55,7 +68,7 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
 
-    boolean areNull(Object... args) {
+    private boolean areNull(Object... args) {
         for (Object arg : args) {
             if (arg != null) {
                 return false;
