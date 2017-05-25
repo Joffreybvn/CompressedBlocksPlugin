@@ -7,7 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -71,6 +71,17 @@ public class Main extends JavaPlugin implements Listener {
             return -1;
         } else {
             return -2;
+        }
+    }
+
+    //Avoid using a compressed block in a furnace
+    @EventHandler
+    public void onFurnaceClick(InventoryClickEvent event) {
+        if (event.getView().getTopInventory().getType() == InventoryType.FURNACE) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().getDisplayName().contains("Compressed")) {
+                event.setCancelled(true);
+                event.getWhoClicked().sendMessage(ChatColor.RED + "You can not use a compressed block in a furnace !");
+            }
         }
     }
 
