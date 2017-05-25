@@ -88,7 +88,7 @@ public class Main extends JavaPlugin implements Listener {
     // Avoid placing a compressed block on the ground
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
-        if (event.getItemInHand().getItemMeta().getDisplayName().contains("Compressed")) {
+        if (event.getItemInHand().hasItemMeta() && event.getItemInHand().getItemMeta().getDisplayName().contains("Compressed")) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.RED + "You can not place a compressed block in the world !");
         }
