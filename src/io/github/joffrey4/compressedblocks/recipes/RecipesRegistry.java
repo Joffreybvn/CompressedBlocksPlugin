@@ -6,90 +6,91 @@ import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.material.MaterialData;
 
 public class RecipesRegistry {
 
     // Wood Recipes declaration
     public static ShapedRecipe oakCompressing;
-    public static ShapedRecipe oakUncompressing;
+    public static ShapelessRecipe oakUncompressing;
 
     public static ShapedRecipe spruceCompressing;
-    public static ShapedRecipe spruceUncompressing;
+    public static ShapelessRecipe spruceUncompressing;
 
     public static ShapedRecipe birchCompressing;
-    public static ShapedRecipe birchUncompressing;
+    public static ShapelessRecipe birchUncompressing;
 
     public static ShapedRecipe jungleCompressing;
-    public static ShapedRecipe jungleUncompressing;
+    public static ShapelessRecipe jungleUncompressing;
 
     public static ShapedRecipe acaciaCompressing;
-    public static ShapedRecipe acaciaUncompressing;
+    public static ShapelessRecipe acaciaUncompressing;
 
     public static ShapedRecipe darkOakCompressing;
-    public static ShapedRecipe odarkOakUncompressing;
+    public static ShapelessRecipe darkOakUncompressing;
 
     // Planks Recipes declaration
     public static ShapedRecipe oakPlankCompressing;
-    public static ShapedRecipe oakPlankUncompressing;
+    public static ShapelessRecipe oakPlankUncompressing;
 
     public static ShapedRecipe sprucePlankCompressing;
-    public static ShapedRecipe sprucePlankUncompressing;
+    public static ShapelessRecipe sprucePlankUncompressing;
 
     public static ShapedRecipe birchPlankCompressing;
-    public static ShapedRecipe birchPlankUncompressing;
+    public static ShapelessRecipe birchPlankUncompressing;
 
     public static ShapedRecipe junglePlankCompressing;
-    public static ShapedRecipe junglePlankUncompressing;
+    public static ShapelessRecipe junglePlankUncompressing;
 
     public static ShapedRecipe acaciaPlankCompressing;
-    public static ShapedRecipe acaciaPlankUncompressing;
+    public static ShapelessRecipe acaciaPlankUncompressing;
 
     public static ShapedRecipe darkOakPlankCompressing;
-    public static ShapedRecipe odarkOakPlankUncompressing;
+    public static ShapelessRecipe darkOakPlankUncompressing;
 
     // Gravel Recipes declaration
     public static ShapedRecipe gravelCompressing;
-    public static ShapedRecipe gravelUncompressing;
+    public static ShapelessRecipe gravelUncompressing;
 
     // Sand Recipes declaration
     public static ShapedRecipe sandCompressing;
-    public static ShapedRecipe sandUncompressing;
+    public static ShapelessRecipe sandUncompressing;
 
     public static ShapedRecipe redSandCompressing;
-    public static ShapedRecipe redSandUncompressing;
+    public static ShapelessRecipe redSandUncompressing;
 
     // Stone Recipes declaration
     public static ShapedRecipe stoneCompressing;
-    public static ShapedRecipe stoneUncompressing;
+    public static ShapelessRecipe stoneUncompressing;
 
     // Granite Recipes declaration
     public static ShapedRecipe graniteCompressing;
-    public static ShapedRecipe graniteUncompressing;
+    public static ShapelessRecipe graniteUncompressing;
 
     // Diorite Recipes declaration
     public static ShapedRecipe dioriteCompressing;
-    public static ShapedRecipe dioriteUncompressing;
+    public static ShapelessRecipe dioriteUncompressing;
 
     // Andesite Recipes declaration
     public static ShapedRecipe andesiteCompressing;
-    public static ShapedRecipe andesiteUncompressing;
+    public static ShapelessRecipe andesiteUncompressing;
 
     // Dirt Recipes declaration
     public static ShapedRecipe dirtCompressing;
-    public static ShapedRecipe dirtUncompressing;
+    public static ShapelessRecipe dirtUncompressing;
 
     // Cobblestone Recipes declaration
     public static ShapedRecipe cobblestoneCompressing;
-    public static ShapedRecipe cobblestoneUncompressing;
+    public static ShapelessRecipe cobblestoneUncompressing;
 
     // Soul Sand Recipes declaration
     public static ShapedRecipe soulSandCompressing;
-    public static ShapedRecipe soulSandUncompressing;
+    public static ShapelessRecipe soulSandUncompressing;
 
     // Netherrack Recipes declaration
     public static ShapedRecipe netherrackCompressing;
-    public static ShapedRecipe netherrackUncompressing;
+    public static ShapelessRecipe netherrackUncompressing;
 
     public static void init() {
         Server server = Bukkit.getServer();
@@ -119,7 +120,7 @@ public class RecipesRegistry {
 
         // Dark Oak Wood compressing and uncompressing
         server.addRecipe(darkOakCompressing = Compressing(BlockRegistry.compressedDarkOak, Material.LOG_2, 1));
-        server.addRecipe(odarkOakUncompressing = UnCompressing(new ItemStack(Material.LOG_2, 9, (short) 1), BlockRegistry.compressedDarkOak.getData()));
+        server.addRecipe(darkOakUncompressing = UnCompressing(new ItemStack(Material.LOG_2, 9, (short) 1), BlockRegistry.compressedDarkOak.getData()));
 
         /*************************************************************************************************
          * Compressed PLANKS - Recipes                                                                   *
@@ -147,7 +148,7 @@ public class RecipesRegistry {
 
         // Dark Oak Plank compressing and uncompressing
         server.addRecipe(darkOakPlankCompressing = Compressing(BlockRegistry.compressedDarkOakPlank, Material.WOOD, 5));
-        server.addRecipe(odarkOakPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 5), BlockRegistry.compressedDarkOakPlank.getData()));
+        server.addRecipe(darkOakPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 5), BlockRegistry.compressedDarkOakPlank.getData()));
 
         /*************************************************************************************************
          * Compressed FALLING Blocks - Recipes                                                           *
@@ -204,6 +205,7 @@ public class RecipesRegistry {
         // Netherrack compressing and uncompressing
         server.addRecipe(netherrackCompressing = Compressing(BlockRegistry.compressedNetherrack, Material.NETHERRACK, 0));
         server.addRecipe(netherrackUncompressing = UnCompressing(new ItemStack(Material.NETHERRACK, 9), BlockRegistry.compressedNetherrack.getData()));
+
     }
 
     private static ShapedRecipe Compressing(ItemStack itemResult, Material ingredient, int meta) {
@@ -213,10 +215,9 @@ public class RecipesRegistry {
         return shapedRecipe;
     }
 
-    private static ShapedRecipe UnCompressing(ItemStack itemResult, MaterialData ingredient) {
-        ShapedRecipe shapedRecipe = new ShapedRecipe(itemResult);
-        shapedRecipe.shape("   ", " I ", "   ");
-        shapedRecipe.setIngredient('I', ingredient);
-        return shapedRecipe;
+    private static ShapelessRecipe UnCompressing(ItemStack itemResult, MaterialData ingredient) {
+        ShapelessRecipe shapelessRecipe = new ShapelessRecipe(itemResult);
+        shapelessRecipe.addIngredient(ingredient);
+        return shapelessRecipe;
     }
 }
