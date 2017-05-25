@@ -10,6 +10,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
@@ -25,15 +26,22 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     // Implements the compressed blocks in crafts
     public void onCraft(PrepareItemCraftEvent event) {
+        ItemStack[] items = event.getInventory().getMatrix();
 
         // Override the default craft with the ones of this plugin
         if (event.getRecipe() instanceof ShapedRecipe) {
-            ItemStack[] items = event.getInventory().getMatrix();
+
             int id = itemMetaCounter(items);
 
             if (id >= 0) {
                 event.getInventory().setResult(new ItemStack(items[id].getType(), 9, items[id].getDurability()));
             } else if (id == -1) {
+                event.getInventory().setResult(new ItemStack(Material.AIR));
+            }
+
+        } else if (event.getRecipe() instanceof ShapelessRecipe) {
+            // Avoid duplicate block, and let the player uncompress netherrack, soulsand, sand
+            if (!canCraftShapeless(items)) {
                 event.getInventory().setResult(new ItemStack(Material.AIR));
             }
         }
@@ -72,6 +80,18 @@ public class Main extends JavaPlugin implements Listener {
         } else {
             return -2;
         }
+    }
+
+    private boolean canCraftShapeless(ItemStack[] items) {
+        int itemAmount = 0;
+        for (ItemStack item : items) {
+            if (item != null) {
+                if (!(item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed"))) {
+                    itemAmount += 1;
+                }
+            }
+        }
+        return itemAmount != 1;
     }
 
     //Avoid using a compressed block in a furnace
