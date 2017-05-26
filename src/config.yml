@@ -1,0 +1,72 @@
+# ======================================================
+# <             Compressed Blocks Plugin:              >
+# <                 Configuration File                 >
+# < https://github.com/Joffrey4/CompressedBlocksPlugin >
+# ======================================================
+
+# This configuration file was generated in v1.2.
+# Please respect the indentation (TAB).
+
+# If any change are made in a future version, you will need to
+# add the missing parameters on your own, or to generate a new
+# configuration file by deleting this one.
+
+
+# BLOCKS: Enable and disable compression and/or un-compression crafts by setting "true" of "false":
+
+Wood:
+  Compressing: true
+  Uncompressing: true
+
+Planks:
+  Compressing: true
+  Uncompressing: true
+
+Gravel:
+  Compressing: true
+  Uncompressing: true
+
+Sand:
+  Compressing: true
+  Uncompressing: true
+
+Stone:
+  Compressing: true
+  Uncompressing: true
+
+Granite:
+  Compressing: true
+  Uncompressing: true
+
+Diorite:
+  Compressing: true
+  Uncompressing: true
+
+Andesite:
+  Compressing: true
+  Uncompressing: true
+
+Dirt:
+  Compressing: true
+  Uncompressing: true
+
+Cobblestone:
+  Compressing: true
+  Uncompressing: true
+
+SoulSand:
+  Compressing: true
+  Uncompressing: true
+
+Netherrack:
+  Compressing: true
+  Uncompressing: true
+
+
+# LANGUAGES: Edit these lines in you own language:
+# PlacingImpossible: Involved when a player try to place a compressed block in the world.
+# FurnaceImpossible: Involved when a player try to use a compressed block in a furnace.
+
+Lang:
+  PlacingImpossible: You can not place a compressed block in the world !
+  FurnaceImpossible: You can not use a compressed block in a furnace !

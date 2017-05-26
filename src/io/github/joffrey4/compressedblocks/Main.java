@@ -4,6 +4,7 @@ import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
 import io.github.joffrey4.compressedblocks.recipes.RecipesRegistry;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -15,10 +16,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
 
+    private FileConfiguration config = getConfig();
+
     @Override
     public void onEnable() {
+        //ConfigGenerator.init(config);
+        //saveConfig();
+        saveDefaultConfig();
+
         BlockRegistry.init();
-        RecipesRegistry.init();
+        RecipesRegistry.init(config);
 
         getServer().getPluginManager().registerEvents(this, this);
     }
@@ -100,7 +107,7 @@ public class Main extends JavaPlugin implements Listener {
         if (event.getView().getTopInventory().getType() == InventoryType.FURNACE) {
             if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().getDisplayName().contains("Compressed")) {
                 event.setCancelled(true);
-                event.getWhoClicked().sendMessage(ChatColor.RED + "You can not use a compressed block in a furnace !");
+                event.getWhoClicked().sendMessage(ChatColor.RED + config.getString("Lang.FurnaceImpossible"));
             }
         }
     }
@@ -110,7 +117,7 @@ public class Main extends JavaPlugin implements Listener {
     public void onPlace(BlockPlaceEvent event) {
         if (event.getItemInHand().hasItemMeta() && event.getItemInHand().getItemMeta().getDisplayName().contains("Compressed")) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You can not place a compressed block in the world !");
+            event.getPlayer().sendMessage(ChatColor.RED + config.getString("Lang.PlacingImpossible"));
         }
     }
 
