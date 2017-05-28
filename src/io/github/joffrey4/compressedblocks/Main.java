@@ -30,28 +30,40 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
     }
 
-    @EventHandler
     // Implements the compressed blocks in crafts
+    @EventHandler
     public void onCraft(PrepareItemCraftEvent event) {
+        // System.out.println("[DEBUG] Oncraft Event started ============= ");
         ItemStack[] items = event.getInventory().getMatrix();
 
         // Override the default craft with the ones of this plugin
         if (event.getRecipe() instanceof ShapedRecipe) {
+            // System.out.println("ShapedRecipe OK");
 
             int id = itemMetaCounter(items);
+            // System.out.println("ID =" + id);
 
             if (id >= 0) {
                 event.getInventory().setResult(new ItemStack(items[id].getType(), 9, items[id].getDurability()));
+                // System.out.println("Craft OK");
             } else if (id == -1) {
-                event.getInventory().setResult(new ItemStack(Material.AIR));
+                System.out.println("Craft Null");
+                // event.getInventory().setResult(new ItemStack(Material.AIR));
+            } else {
+                // System.out.println("Craft Pass");
             }
 
         } else if (event.getRecipe() instanceof ShapelessRecipe) {
+            // System.out.println("ShapedLess OK");
             // Avoid duplicate block, and let the player uncompress netherrack, soulsand, sand
             if (!canCraftShapeless(items)) {
+                // System.out.println("Craft Null");
                 event.getInventory().setResult(new ItemStack(Material.AIR));
+            } else {
+                // System.out.println("Craft Pass");
             }
         }
+        // System.out.println("[DEBUG] Oncraft Event stopped ============= ");
     }
 
     private int itemMetaCounter(ItemStack[] items) {
@@ -92,12 +104,15 @@ public class Main extends JavaPlugin implements Listener {
     private boolean canCraftShapeless(ItemStack[] items) {
         int itemAmount = 0;
         for (ItemStack item : items) {
-            if (item != null) {
-                if (!(item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed"))) {
+            if (item != null && item.getType() != Material.AIR) {
+                if (!(item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed")) &&
+                        item.getType() != Material.RED_ROSE && item.getType() != Material.YELLOW_FLOWER &&
+                        item.getType() != Material.BONE && item.getType() != Material.BLAZE_ROD) {
                     itemAmount += 1;
                 }
             }
         }
+        // System.out.println("ItemAmount =" + itemAmount);
         return itemAmount != 1;
     }
 
