@@ -20,8 +20,6 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        //ConfigGenerator.init(config);
-        //saveConfig();
         saveDefaultConfig();
 
         BlockRegistry.init();
@@ -30,40 +28,48 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
     }
 
-    // Implements the compressed blocks in crafts
+    // Implements the recipes in crafts
     @EventHandler
     public void onCraft(PrepareItemCraftEvent event) {
-        // System.out.println("[DEBUG] Oncraft Event started ============= ");
         ItemStack[] items = event.getInventory().getMatrix();
 
-        // Override the default craft with the ones of this plugin
+        // Shaped Recipes: Block compressing, and some uncompressing recipes
         if (event.getRecipe() instanceof ShapedRecipe) {
-            // System.out.println("ShapedRecipe OK");
 
-            int id = itemMetaCounter(items);
-            // System.out.println("ID =" + id);
+            // Allow compressing only if the player has the permission
+            if (event.getRecipe().getResult().hasItemMeta() && event.getRecipe().getResult().getItemMeta().getDisplayName().contains("Compressed")) {
+                if (!event.getView().getPlayer().hasPermission("compressedblocks.compress")) {
+                    event.getInventory().setResult(new ItemStack(Material.AIR));
+                }
 
-            if (id >= 0) {
-                event.getInventory().setResult(new ItemStack(items[id].getType(), 9, items[id].getDurability()));
-                // System.out.println("Craft OK");
-            } else if (id == -1) {
-                System.out.println("Craft Null");
-                // event.getInventory().setResult(new ItemStack(Material.AIR));
+            // Allow uncompressing only for the compressed items, and if the player has the permission
             } else {
-                // System.out.println("Craft Pass");
+                int id = itemMetaCounter(items);
+
+                if (id >= 0) {
+                    if (event.getView().getPlayer().hasPermission("compressedblocks.uncompress")) {
+                        event.getInventory().setResult(new ItemStack(items[id].getType(), 9, items[id].getDurability()));
+                    } else {
+                        event.getInventory().setResult(new ItemStack(Material.AIR));
+                    }
+                } else if (id == -1) {
+                    event.getInventory().setResult(new ItemStack(Material.AIR));
+                }
             }
 
+        // Shapeless Recipes: uncompressing of netherrack, sand and soulsand.
         } else if (event.getRecipe() instanceof ShapelessRecipe) {
-            // System.out.println("ShapedLess OK");
-            // Avoid duplicate block, and let the player uncompress netherrack, soulsand, sand
-            if (!canCraftShapeless(items)) {
-                // System.out.println("Craft Null");
+
+            // Allow uncompressing if the player has the permission
+            if (canCraftShapeless(items) == 1) {
+                if (!event.getView().getPlayer().hasPermission("compressedblocks.uncompress")) {
+                    event.getInventory().setResult(new ItemStack(Material.AIR));
+                }
+            // Avoid to duplicate standard blocks.
+            } else if (canCraftShapeless(items) == 0) {
                 event.getInventory().setResult(new ItemStack(Material.AIR));
-            } else {
-                // System.out.println("Craft Pass");
             }
         }
-        // System.out.println("[DEBUG] Oncraft Event stopped ============= ");
     }
 
     private int itemMetaCounter(ItemStack[] items) {
@@ -101,19 +107,32 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
 
-    private boolean canCraftShapeless(ItemStack[] items) {
-        int itemAmount = 0;
+    private int canCraftShapeless(ItemStack[] items) {
+        int itemNormal = 0;
+        int itemforbidden = 0;
+        int itemCompressed = 0;
+
         for (ItemStack item : items) {
-            if (item != null && item.getType() != Material.AIR) {
-                if (!(item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed")) &&
-                        item.getType() != Material.RED_ROSE && item.getType() != Material.YELLOW_FLOWER &&
-                        item.getType() != Material.BONE && item.getType() != Material.BLAZE_ROD) {
-                    itemAmount += 1;
+            if (item != null) {
+
+                if (item.hasItemMeta() && item.getItemMeta().getDisplayName().contains("Compressed")) {
+                    itemCompressed +=1;
+                } else if (item.getType() == Material.RED_ROSE || item.getType() == Material.YELLOW_FLOWER ||
+                        item.getType() == Material.BONE || item.getType() == Material.BLAZE_ROD) {
+                    itemNormal += 1;
+                } else {
+                    itemforbidden += 1;
                 }
             }
         }
-        // System.out.println("ItemAmount =" + itemAmount);
-        return itemAmount != 1;
+
+        if (itemCompressed == 1 && (itemforbidden + itemNormal) == 0) {
+            return 1;
+        } else if (itemforbidden == 1 && (itemCompressed + itemNormal) == 0) {
+            return 0;
+        } else {
+            return 2;
+        }
     }
 
     //Avoid using a compressed block in a furnace
