@@ -1,11 +1,9 @@
 package io.github.joffrey4.compressedblocks.blocks;
 
-import org.bukkit.ChatColor;
+import io.github.joffrey4.compressedblocks.Main;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
 
 public class BlockRegistry {
 
@@ -42,56 +40,52 @@ public class BlockRegistry {
     public static ItemStack compressedSoulSand;
     public static ItemStack compressedNetherrack;
 
-    public static void init() {
+    public static void init(Main plugin) {
 
         // Compressed Woods
-        compressedOak = compressedBlock(Material.LOG, 0, "Oak Wood");
-        compressedSpruce = compressedBlock(Material.LOG, 1, "Spruce Wood");
-        compressedBirch = compressedBlock(Material.LOG, 2, "Birch Wood");
-        compressedJungle = compressedBlock(Material.LOG, 3, "Jungle Wood");
-        compressedAcacia = compressedBlock(Material.LOG_2, 0, "Acacia Wood");
-        compressedDarkOak = compressedBlock(Material.LOG_2, 1, "Dark Oak Wood");
+        compressedOak = register(new BlockCompressedWood(Material.LOG, 0, "Oak Wood", plugin));
+        compressedSpruce = register(new BlockCompressedWood(Material.LOG, 1, "Spruce Wood", plugin));
+        compressedBirch = register(new BlockCompressedWood(Material.LOG, 2, "Birch Wood", plugin));
+        compressedJungle = register(new BlockCompressedWood(Material.LOG, 3, "Jungle Wood", plugin));
+        compressedAcacia = register(new BlockCompressedWood(Material.LOG_2, 0, "Acacia Wood", plugin));
+        compressedDarkOak = register(new BlockCompressedWood(Material.LOG_2, 1, "Dark Oak Wood", plugin));
 
         // Compressed Planks
-        compressedOakPlank = compressedBlock(Material.WOOD, 0, "Oak Plank");
-        compressedSprucePlank = compressedBlock(Material.WOOD, 1, "Spruce Plank");
-        compressedBirchPlank = compressedBlock(Material.WOOD, 2, "Birch Plank");
-        compressedJunglePlank = compressedBlock(Material.WOOD, 3, "Jungle Plank");
-        compressedAcaciaPlank = compressedBlock(Material.WOOD, 4, "Acacia Plank");
-        compressedDarkOakPlank = compressedBlock(Material.WOOD, 5, "Dark Oak Plank");
+        compressedOakPlank = register(new BlockCompressedPlank(Material.WOOD, 0, "Oak Plank", plugin));
+        compressedSprucePlank = register(new BlockCompressedPlank(Material.WOOD, 1, "Spruce Plank", plugin));
+        compressedBirchPlank = register(new BlockCompressedPlank(Material.WOOD, 2, "Birch Plank", plugin));
+        compressedJunglePlank = register(new BlockCompressedPlank(Material.WOOD, 3, "Jungle Plank", plugin));
+        compressedAcaciaPlank = register(new BlockCompressedPlank(Material.WOOD, 4, "Acacia Plank", plugin));
+        compressedDarkOakPlank = register(new BlockCompressedPlank(Material.WOOD, 5, "Dark Oak Plank", plugin));
 
         // Compressed Falling Blocks
-        compressedGravel = compressedBlock(Material.GRAVEL, 0, "Gravel");
-        compressedSand = compressedBlock(Material.SAND, 0, "Sand");
-        compressedRedSand = compressedBlock(Material.SAND, 1, "Red Sand");
+        compressedGravel = register(new BlockCompressed(Material.GRAVEL, 0, "Gravel", plugin));
+        compressedSand = register(new BlockCompressed(Material.SAND, 0, "Sand", plugin));
+        compressedRedSand = register(new BlockCompressedRedSand(Material.SAND, 1, "Red Sand", plugin));
 
         // Compressed Stone Blocks
-        compressedStone = compressedBlock(Material.STONE, 0, "Stone");
-        compressedGranite = compressedBlock(Material.STONE, 1, "Granite");
-        compressedDiorite = compressedBlock(Material.STONE, 3, "Diorite");
-        compressedAndesite = compressedBlock(Material.STONE, 5, "Andesite");
+        compressedStone = register(new BlockCompressed(Material.STONE, 0, "Stone", plugin));
+        compressedGranite = register(new BlockCompressed(Material.STONE, 1, "Granite", plugin));
+        compressedDiorite = register(new BlockCompressed(Material.STONE, 3, "Diorite", plugin));
+        compressedAndesite = register(new BlockCompressed(Material.STONE, 5, "Andesite", plugin));
 
         // Others compressed Blocks
-        compressedDirt = compressedBlock(Material.DIRT, 0, "Dirt");
-        compressedCobblestone = compressedBlock(Material.COBBLESTONE, 0, "Cobblestone");
-        compressedSoulSand = compressedBlock(Material.SOUL_SAND, 0, "SoulSand");
-        compressedNetherrack = compressedBlock(Material.NETHERRACK, 0, "Netherrack");
+        compressedDirt = register(new BlockCompressed(Material.DIRT, 0, "Dirt", plugin));
+        compressedCobblestone = register(new BlockCompressed(Material.COBBLESTONE, 0, "Cobblestone", plugin));
+        compressedSoulSand = register(new BlockCompressedSoulSand(Material.SOUL_SAND, 0, "Soul Sand", plugin));
+        compressedNetherrack = register(new BlockCompressed(Material.NETHERRACK, 0, "Netherrack", plugin));
     }
 
-    private static ItemStack compressedBlock(Material material, int metadata, String name) {
-        ItemStack block = new ItemStack(material, 1, (short) metadata);
+    private static ItemStack register(BlockCompressed block) {
+        // Create a stack and get its meta
+        ItemStack itemStack = block.getItemStack();
+        ItemMeta meta = itemStack.getItemMeta();
 
-        // Replace the Displayname
-        ItemMeta meta = block.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "Compressed " + name);
+        // Write the DisplayName & the Lore
+        meta.setDisplayName(block.getDisplayName());
+        meta.setLore(block.getLore());
 
-        // Add a Lore
-        ArrayList<String> lore = new ArrayList<String>();
-        lore.add("A block that contain");
-        lore.add( "9x " + name + " !");
-        meta.setLore(lore);
-
-        block.setItemMeta(meta);
-        return block;
+        itemStack.setItemMeta(meta);
+        return itemStack;
     }
 }

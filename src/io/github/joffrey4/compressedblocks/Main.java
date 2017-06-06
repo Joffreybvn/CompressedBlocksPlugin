@@ -22,7 +22,7 @@ public class Main extends JavaPlugin implements Listener {
     public void onEnable() {
         saveDefaultConfig();
 
-        BlockRegistry.init();
+        BlockRegistry.init(this);
         RecipesRegistry.init(config);
 
         getServer().getPluginManager().registerEvents(this, this);

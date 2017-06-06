@@ -4,7 +4,7 @@
 # < https://github.com/Joffrey4/CompressedBlocksPlugin >
 # ======================================================
 
-# This configuration file was generated in v1.2.
+# This configuration file was generated in v1.3.
 # Please respect the indentation (TAB).
 
 # If any change are made in a future version, you will need to
@@ -12,13 +12,13 @@
 # configuration file by deleting this one.
 
 
-# BLOCKS: Enable and disable compression and/or un-compression crafts by setting "true" of "false":
+# CRAFT: Enable and disable compression and/or un-compression crafts by setting "true" of "false":
 
 Wood:
   Compressing: true
   Uncompressing: true
 
-Planks:
+Plank:
   Compressing: true
   Uncompressing: true
 
@@ -63,10 +63,40 @@ Netherrack:
   Uncompressing: true
 
 
-# LANGUAGES: Edit these lines in you own language:
-# PlacingImpossible: Involved when a player try to place a compressed block in the world.
-# FurnaceImpossible: Involved when a player try to use a compressed block in a furnace.
+# LANGUAGES: Lore
+# Use a common lore for all of your blocks by setting 'UseCommonLore' to true. You can also write
+# specific lore for certain blocks by setting it to false, and by editing the detailed lore below.
+# Use '&type' to write automatically the block type (ex 'Cobblestone' for Compressed Cobblestone).
+# Lore modification is applied only to newly compressed blocks.
+
+UseCommonLore: true
+CommonLore:
+  - 'A block that contain'
+  - '9x &type !'
+
+# DetailedLore:
+#   Wood:
+#     - 'Another lore specific'
+#     - 'to the &type !'
+#   Plank:
+#   Gravel:
+#   Sand:
+#   RedSand
+#   Stone:
+#   Granite:
+#   Diorite:
+#   Andesite:
+#   Dirt:
+#   Cobblestone:
+#   SoulSand:
+#   Netherrack:
+
+
+# LANGUAGES: Error messages
 
 Lang:
-  PlacingImpossible: You can not place a compressed block in the world !
-  FurnaceImpossible: You can not use a compressed block in a furnace !
+# PlacingImpossible: Displayed when a player try to place a compressed block in the world.
+  PlacingImpossible: 'You can not place a compressed block in the world !'
+
+# FurnaceImpossible: Displayed when a player try to use a compressed block in a furnace.
+  FurnaceImpossible: 'You can not use a compressed block in a furnace !'
