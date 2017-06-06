@@ -5,7 +5,7 @@
 # ======================================================
 
 # This configuration file was generated in v1.3.
-# Please respect the indentation (TAB).
+# Please respect the indentation (2 spaces).
 
 # If any change are made in a future version, you will need to
 # add the missing parameters on your own, or to generate a new
@@ -64,10 +64,10 @@ Netherrack:
 
 
 # LANGUAGES: Lore
-# Use a common lore for all of your blocks by setting 'UseCommonLore' to true. You can also write
-# specific lore for certain blocks by setting it to false, and by editing the detailed lore below.
+# Use a common lore for all of your block by setting 'UseCommonLore' to true. You can also write
+# specific lore for certain block by setting it to false, and by editing the detailed lore below.
 # Use '&type' to write automatically the block type (ex 'Cobblestone' for Compressed Cobblestone).
-# Lore modification is applied only to newly compressed blocks.
+# Lore modification is applied only to newly compressed block.
 
 UseCommonLore: true
 CommonLore:

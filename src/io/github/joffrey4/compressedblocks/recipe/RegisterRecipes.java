@@ -1,4 +1,4 @@
-package io.github.joffrey4.compressedblocks.recipes;
+package io.github.joffrey4.compressedblocks.recipe;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -6,11 +6,11 @@ import org.bukkit.Server;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import io.github.joffrey4.compressedblocks.blocks.BlockRegistry;
+import io.github.joffrey4.compressedblocks.block.RegisterBlocks;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.material.MaterialData;
 
-public class RecipesRegistry {
+public class RegisterRecipes {
 
     // Wood Recipes declaration
     public static ShapedRecipe oakCompressing;
@@ -102,22 +102,22 @@ public class RecipesRegistry {
 
         // Wood compressing
         if (config.getBoolean("Wood.Compressing")) {
-            server.addRecipe(oakCompressing = Compressing(BlockRegistry.compressedOak, Material.LOG, 0));
-            server.addRecipe(spruceCompressing = Compressing(BlockRegistry.compressedSpruce, Material.LOG, 1));
-            server.addRecipe(birchCompressing = Compressing(BlockRegistry.compressedBirch, Material.LOG, 2));
-            server.addRecipe(jungleCompressing = Compressing(BlockRegistry.compressedJungle, Material.LOG, 3));
-            server.addRecipe(acaciaCompressing = Compressing(BlockRegistry.compressedAcacia, Material.LOG_2, 0));
-            server.addRecipe(darkOakCompressing = Compressing(BlockRegistry.compressedDarkOak, Material.LOG_2, 1));
+            server.addRecipe(oakCompressing = Compressing(RegisterBlocks.compressedOak, Material.LOG, 0));
+            server.addRecipe(spruceCompressing = Compressing(RegisterBlocks.compressedSpruce, Material.LOG, 1));
+            server.addRecipe(birchCompressing = Compressing(RegisterBlocks.compressedBirch, Material.LOG, 2));
+            server.addRecipe(jungleCompressing = Compressing(RegisterBlocks.compressedJungle, Material.LOG, 3));
+            server.addRecipe(acaciaCompressing = Compressing(RegisterBlocks.compressedAcacia, Material.LOG_2, 0));
+            server.addRecipe(darkOakCompressing = Compressing(RegisterBlocks.compressedDarkOak, Material.LOG_2, 1));
         }
 
         // Wood uncompressing
         if (config.getBoolean("Wood.Uncompressing")) {
-            server.addRecipe(oakUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 0), BlockRegistry.compressedOak.getData()));
-            server.addRecipe(spruceUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 1), BlockRegistry.compressedSpruce.getData()));
-            server.addRecipe(birchUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 2), BlockRegistry.compressedBirch.getData()));
-            server.addRecipe(jungleUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 3), BlockRegistry.compressedJungle.getData()));
-            server.addRecipe(acaciaUncompressing = UnCompressing(new ItemStack(Material.LOG_2, 9, (short) 0), BlockRegistry.compressedAcacia.getData()));
-            server.addRecipe(darkOakUncompressing = UnCompressing(new ItemStack(Material.LOG_2, 9, (short) 1), BlockRegistry.compressedDarkOak.getData()));
+            server.addRecipe(oakUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 0), RegisterBlocks.compressedOak.getData()));
+            server.addRecipe(spruceUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 1), RegisterBlocks.compressedSpruce.getData()));
+            server.addRecipe(birchUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 2), RegisterBlocks.compressedBirch.getData()));
+            server.addRecipe(jungleUncompressing = UnCompressing(new ItemStack(Material.LOG, 9, (short) 3), RegisterBlocks.compressedJungle.getData()));
+            server.addRecipe(acaciaUncompressing = UnCompressing(new ItemStack(Material.LOG_2, 9, (short) 0), RegisterBlocks.compressedAcacia.getData()));
+            server.addRecipe(darkOakUncompressing = UnCompressing(new ItemStack(Material.LOG_2, 9, (short) 1), RegisterBlocks.compressedDarkOak.getData()));
         }
 
         /*************************************************************************************************
@@ -126,22 +126,22 @@ public class RecipesRegistry {
 
         // Planks compressing
         if (config.getBoolean("Planks.Compressing")) {
-            server.addRecipe(oakPlankCompressing = Compressing(BlockRegistry.compressedOakPlank, Material.WOOD, 0));
-            server.addRecipe(sprucePlankCompressing = Compressing(BlockRegistry.compressedSprucePlank, Material.WOOD, 1));
-            server.addRecipe(birchPlankCompressing = Compressing(BlockRegistry.compressedBirchPlank, Material.WOOD, 2));
-            server.addRecipe(junglePlankCompressing = Compressing(BlockRegistry.compressedJunglePlank, Material.WOOD, 3));
-            server.addRecipe(acaciaPlankCompressing = Compressing(BlockRegistry.compressedAcaciaPlank, Material.WOOD, 4));
-            server.addRecipe(darkOakPlankCompressing = Compressing(BlockRegistry.compressedDarkOakPlank, Material.WOOD, 5));
+            server.addRecipe(oakPlankCompressing = Compressing(RegisterBlocks.compressedOakPlank, Material.WOOD, 0));
+            server.addRecipe(sprucePlankCompressing = Compressing(RegisterBlocks.compressedSprucePlank, Material.WOOD, 1));
+            server.addRecipe(birchPlankCompressing = Compressing(RegisterBlocks.compressedBirchPlank, Material.WOOD, 2));
+            server.addRecipe(junglePlankCompressing = Compressing(RegisterBlocks.compressedJunglePlank, Material.WOOD, 3));
+            server.addRecipe(acaciaPlankCompressing = Compressing(RegisterBlocks.compressedAcaciaPlank, Material.WOOD, 4));
+            server.addRecipe(darkOakPlankCompressing = Compressing(RegisterBlocks.compressedDarkOakPlank, Material.WOOD, 5));
         }
 
         // Planks uncompressing
         if (config.getBoolean("Planks.Uncompressing")) {
-            server.addRecipe(oakPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 0), BlockRegistry.compressedOakPlank.getData()));
-            server.addRecipe(sprucePlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 1), BlockRegistry.compressedSprucePlank.getData()));
-            server.addRecipe(birchPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 2), BlockRegistry.compressedBirchPlank.getData()));
-            server.addRecipe(junglePlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 3), BlockRegistry.compressedJunglePlank.getData()));
-            server.addRecipe(acaciaPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 4), BlockRegistry.compressedAcaciaPlank.getData()));
-            server.addRecipe(darkOakPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 5), BlockRegistry.compressedDarkOakPlank.getData()));
+            server.addRecipe(oakPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 0), RegisterBlocks.compressedOakPlank.getData()));
+            server.addRecipe(sprucePlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 1), RegisterBlocks.compressedSprucePlank.getData()));
+            server.addRecipe(birchPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 2), RegisterBlocks.compressedBirchPlank.getData()));
+            server.addRecipe(junglePlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 3), RegisterBlocks.compressedJunglePlank.getData()));
+            server.addRecipe(acaciaPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 4), RegisterBlocks.compressedAcaciaPlank.getData()));
+            server.addRecipe(darkOakPlankUncompressing = UnCompressing(new ItemStack(Material.WOOD, 9, (short) 5), RegisterBlocks.compressedDarkOakPlank.getData()));
         }
 
         /*************************************************************************************************
@@ -150,20 +150,20 @@ public class RecipesRegistry {
 
         // Gravel compressing and uncompressing
         if (config.getBoolean("Gravel.Compressing")) {
-            server.addRecipe(gravelCompressing = Compressing(BlockRegistry.compressedGravel, Material.GRAVEL, 0));
+            server.addRecipe(gravelCompressing = Compressing(RegisterBlocks.compressedGravel, Material.GRAVEL, 0));
         }
         if (config.getBoolean("Gravel.Uncompressing")) {
-            server.addRecipe(gravelUncompressing = UnCompressing(new ItemStack(Material.GRAVEL, 9), BlockRegistry.compressedGravel.getData()));
+            server.addRecipe(gravelUncompressing = UnCompressing(new ItemStack(Material.GRAVEL, 9), RegisterBlocks.compressedGravel.getData()));
         }
 
         // Sands compressing and uncompressing
         if (config.getBoolean("Sand.Compressing")) {
-            server.addRecipe(sandCompressing = Compressing(BlockRegistry.compressedSand, Material.SAND, 0));
-            server.addRecipe(redSandCompressing = Compressing(BlockRegistry.compressedRedSand, Material.SAND, 1));
+            server.addRecipe(sandCompressing = Compressing(RegisterBlocks.compressedSand, Material.SAND, 0));
+            server.addRecipe(redSandCompressing = Compressing(RegisterBlocks.compressedRedSand, Material.SAND, 1));
         }
         if (config.getBoolean("Sand.Uncompressing")) {
-            server.addRecipe(sandUncompressing = UnCompressing(new ItemStack(Material.SAND, 9, (short) 0), BlockRegistry.compressedSand.getData()));
-            server.addRecipe(redSandUncompressing = UnCompressing(new ItemStack(Material.SAND, 9, (short) 1), BlockRegistry.compressedRedSand.getData()));
+            server.addRecipe(sandUncompressing = UnCompressing(new ItemStack(Material.SAND, 9, (short) 0), RegisterBlocks.compressedSand.getData()));
+            server.addRecipe(redSandUncompressing = UnCompressing(new ItemStack(Material.SAND, 9, (short) 1), RegisterBlocks.compressedRedSand.getData()));
         }
 
         /*************************************************************************************************
@@ -172,34 +172,34 @@ public class RecipesRegistry {
 
         // Stone compressing and uncompressing
         if (config.getBoolean("Stone.Compressing")) {
-            server.addRecipe(stoneCompressing = Compressing(BlockRegistry.compressedStone, Material.STONE, 0));
+            server.addRecipe(stoneCompressing = Compressing(RegisterBlocks.compressedStone, Material.STONE, 0));
         }
         if (config.getBoolean("Stone.Uncompressing")) {
-            server.addRecipe(stoneUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 0), BlockRegistry.compressedStone.getData()));
+            server.addRecipe(stoneUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 0), RegisterBlocks.compressedStone.getData()));
         }
 
         // Granite compressing and uncompressing
         if (config.getBoolean("Granite.Compressing")) {
-            server.addRecipe(graniteCompressing = Compressing(BlockRegistry.compressedGranite, Material.STONE, 1));
+            server.addRecipe(graniteCompressing = Compressing(RegisterBlocks.compressedGranite, Material.STONE, 1));
         }
         if (config.getBoolean("Granite.Uncompressing")) {
-            server.addRecipe(graniteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 1), BlockRegistry.compressedGranite.getData()));
+            server.addRecipe(graniteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 1), RegisterBlocks.compressedGranite.getData()));
         }
 
         // Diorite compressing and uncompressing
         if (config.getBoolean("Diorite.Compressing")) {
-            server.addRecipe(dioriteCompressing = Compressing(BlockRegistry.compressedDiorite, Material.STONE, 3));
+            server.addRecipe(dioriteCompressing = Compressing(RegisterBlocks.compressedDiorite, Material.STONE, 3));
         }
         if (config.getBoolean("Diorite.Uncompressing")) {
-            server.addRecipe(dioriteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 3), BlockRegistry.compressedDiorite.getData()));
+            server.addRecipe(dioriteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 3), RegisterBlocks.compressedDiorite.getData()));
         }
 
         // Andesite compressing and uncompressing
         if (config.getBoolean("Andesite.Compressing")) {
-            server.addRecipe(andesiteCompressing = Compressing(BlockRegistry.compressedAndesite, Material.STONE, 5));
+            server.addRecipe(andesiteCompressing = Compressing(RegisterBlocks.compressedAndesite, Material.STONE, 5));
         }
         if (config.getBoolean("Andesite.Uncompressing")) {
-            server.addRecipe(andesiteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 5), BlockRegistry.compressedAndesite.getData()));
+            server.addRecipe(andesiteUncompressing = UnCompressing(new ItemStack(Material.STONE, 9, (short) 5), RegisterBlocks.compressedAndesite.getData()));
         }
 
         /*************************************************************************************************
@@ -208,34 +208,34 @@ public class RecipesRegistry {
 
         // Dirt compressing and uncompressing
         if (config.getBoolean("Dirt.Compressing")) {
-            server.addRecipe(dirtCompressing = Compressing(BlockRegistry.compressedDirt, Material.DIRT, 0));
+            server.addRecipe(dirtCompressing = Compressing(RegisterBlocks.compressedDirt, Material.DIRT, 0));
         }
         if (config.getBoolean("Dirt.Uncompressing")) {
-            server.addRecipe(dirtUncompressing = UnCompressing(new ItemStack(Material.DIRT, 9), BlockRegistry.compressedDirt.getData()));
+            server.addRecipe(dirtUncompressing = UnCompressing(new ItemStack(Material.DIRT, 9), RegisterBlocks.compressedDirt.getData()));
         }
 
         // Cobblestone compressing and uncompressing
         if (config.getBoolean("Cobblestone.Compressing")) {
-            server.addRecipe(cobblestoneCompressing = Compressing(BlockRegistry.compressedCobblestone, Material.COBBLESTONE, 0));
+            server.addRecipe(cobblestoneCompressing = Compressing(RegisterBlocks.compressedCobblestone, Material.COBBLESTONE, 0));
         }
         if (config.getBoolean("Cobblestone.Uncompressing")) {
-            server.addRecipe(cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), BlockRegistry.compressedCobblestone.getData()));
+            server.addRecipe(cobblestoneUncompressing = UnCompressing(new ItemStack(Material.COBBLESTONE, 9), RegisterBlocks.compressedCobblestone.getData()));
         }
 
         // Soul Sand compressing and uncompressing
         if (config.getBoolean("SoulSand.Compressing")) {
-            server.addRecipe(soulSandCompressing = Compressing(BlockRegistry.compressedSoulSand, Material.SOUL_SAND, 0));
+            server.addRecipe(soulSandCompressing = Compressing(RegisterBlocks.compressedSoulSand, Material.SOUL_SAND, 0));
         }
         if (config.getBoolean("SoulSand.Uncompressing")) {
-            server.addRecipe(soulSandUncompressing = UnCompressing(new ItemStack(Material.SOUL_SAND, 9), BlockRegistry.compressedSoulSand.getData()));
+            server.addRecipe(soulSandUncompressing = UnCompressing(new ItemStack(Material.SOUL_SAND, 9), RegisterBlocks.compressedSoulSand.getData()));
         }
 
         // Netherrack compressing and uncompressing
         if (config.getBoolean("Netherrack.Compressing")) {
-            server.addRecipe(netherrackCompressing = Compressing(BlockRegistry.compressedNetherrack, Material.NETHERRACK, 0));
+            server.addRecipe(netherrackCompressing = Compressing(RegisterBlocks.compressedNetherrack, Material.NETHERRACK, 0));
         }
         if (config.getBoolean("Netherrack.Uncompressing")) {
-            server.addRecipe(netherrackUncompressing = UnCompressing(new ItemStack(Material.NETHERRACK, 9), BlockRegistry.compressedNetherrack.getData()));
+            server.addRecipe(netherrackUncompressing = UnCompressing(new ItemStack(Material.NETHERRACK, 9), RegisterBlocks.compressedNetherrack.getData()));
         }
 
     }

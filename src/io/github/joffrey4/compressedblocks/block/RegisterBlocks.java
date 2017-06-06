@@ -1,11 +1,11 @@
-package io.github.joffrey4.compressedblocks.blocks;
+package io.github.joffrey4.compressedblocks.block;
 
 import io.github.joffrey4.compressedblocks.Main;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class BlockRegistry {
+public class RegisterBlocks {
 
     // Compressed Woods
     public static ItemStack compressedOak;

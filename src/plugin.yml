@@ -3,4 +3,12 @@ version: 1.3
 author: Joffrey4 aka NycoDiValones
 main: io.github.joffrey4.compressedblocks.Main
 website: https://jbvn.me/cbp/
-description: Save space in your chests by compressing your blocks !
+description: Save space in your chests by compressing your block !
+
+commands:
+  compressedblocks:
+    aliases: [cb, compblocks]
+    description: Edit the configuration of the Compressed Blocks plugin.
+    usage: /compressedblocks or /cb, /compblocks
+    permission: compressedblocks.admin
+    permission-message: You don't have the permission to execute this command

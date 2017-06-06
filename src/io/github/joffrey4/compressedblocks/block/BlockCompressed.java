@@ -1,4 +1,4 @@
-package io.github.joffrey4.compressedblocks.blocks;
+package io.github.joffrey4.compressedblocks.block;
 
 import io.github.joffrey4.compressedblocks.Main;
 import org.bukkit.ChatColor;
