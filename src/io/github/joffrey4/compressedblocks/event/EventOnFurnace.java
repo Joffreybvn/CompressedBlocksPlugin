@@ -8,11 +8,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 
-public class EventOnFurnace implements Listener {
+public class EventOnFurnace extends EventBase implements Listener {
 
     private FileConfiguration config;
 
     public EventOnFurnace(Main plugin) {
+        super(plugin);
         this.config = plugin.getConfig();
     }
 
@@ -20,7 +21,7 @@ public class EventOnFurnace implements Listener {
     @EventHandler
     public void onFurnace(InventoryClickEvent event) {
         if (event.getView().getTopInventory().getType() == InventoryType.FURNACE) {
-            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().getDisplayName().contains("Compressed")) {
+            if (isCompressedBlock(event.getCurrentItem())) {
                 event.setCancelled(true);
                 event.getWhoClicked().sendMessage(ChatColor.RED + config.getString("Lang.FurnaceImpossible"));
             }

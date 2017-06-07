@@ -10,11 +10,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
-public class EventOnCraft implements Listener {
+public class EventOnCraft extends EventBase implements Listener {
 
     private FileConfiguration config;
 
     public EventOnCraft(Main plugin) {
+        super(plugin);
         this.config = plugin.getConfig();
     }
 
@@ -30,8 +31,6 @@ public class EventOnCraft implements Listener {
             if (isCompressedBlock(event.getRecipe().getResult())) {
                 if (!event.getView().getPlayer().hasPermission("compressedblocks.compress")) {
                     event.getInventory().setResult(new ItemStack(Material.AIR));
-                } else {
-                    //System.out.print("Compressing allowed");
                 }
 
             // Allow uncompressing only for the compressed items, and if the player has the permission
@@ -60,8 +59,6 @@ public class EventOnCraft implements Listener {
                 // Avoid to duplicate standard block.
             } else if (canCraftShapeless(items) == 0) {
                 event.getInventory().setResult(new ItemStack(Material.AIR));
-            } else {
-                //System.out.print("Shapeless Recipe == 2");
             }
         }
     }
@@ -127,16 +124,5 @@ public class EventOnCraft implements Listener {
         } else {
             return 2;
         }
-    }
-
-    /**
-     * Check if a given ItemStack is a compressed block.
-     *
-     * @param itemStack An item or block stack object.
-     * @return true  If the ItemStack is a compressed block
-     *         false If it's not a compressed block.
-     */
-    private Boolean isCompressedBlock(ItemStack itemStack) {
-        return itemStack.hasItemMeta() && itemStack.getItemMeta().getDisplayName().contains("Compressed") && itemStack.getItemMeta().hasLore() && (!itemStack.getItemMeta().getLore().isEmpty());
     }
 }
