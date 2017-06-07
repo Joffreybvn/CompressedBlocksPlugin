@@ -19,7 +19,7 @@ public class Main extends JavaPlugin {
         RegisterRecipes.init(config);
 
         // Initialize plugin mechanics
-        getServer().getPluginManager().registerEvents(new RegisterEvent(this), this);
+        RegisterEvent.init(this);
     }
 
 
