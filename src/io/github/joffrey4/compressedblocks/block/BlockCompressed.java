@@ -52,6 +52,7 @@ public class BlockCompressed {
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
         GameProfile profile = new GameProfile(UUID.fromString(EnumUUID.getByName(typeName).getValue()), null);
         profile.getProperties().put("textures", new Property("textures", Base64Coder.encodeString("{textures:{SKIN:{url:\"" + skinURL + "\"}}}")));
+        profile.getProperties().put("typeName", new Property("typeName", typeName));
 
         // Set the texture profile to the skull metadata
         Field profileField = null;
@@ -59,8 +60,8 @@ public class BlockCompressed {
             profileField = skullMeta.getClass().getDeclaredField("profile");
             profileField.setAccessible(true);
             profileField.set(skullMeta, profile);
-        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e1) {
-            e1.printStackTrace();
+        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
+            e.printStackTrace();
         }
 
         // Save the metadata on the skull and return it
