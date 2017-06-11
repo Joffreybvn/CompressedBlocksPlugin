@@ -67,8 +67,4 @@ public class EventBase {
         }
         return profile;
     }
-
-    private String getTypeName(String name) {
-        return name.replace("Compressed", "").replaceAll("\\s+","");
-    }
 }

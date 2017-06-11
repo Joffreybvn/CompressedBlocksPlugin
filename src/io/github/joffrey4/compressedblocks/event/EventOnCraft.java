@@ -41,18 +41,6 @@ public class EventOnCraft extends EventBase implements Listener {
                     System.out.print("HasNotPermission");
                     event.getInventory().setResult(new ItemStack(Material.AIR));
                 }
-
-            // Allow uncompressing only for the compressed items, and if the player has the permission
-            } else {
-                ImmutablePair recipeData = isShapedUncompressingCraft(items);
-                if ((Boolean) recipeData.getKey() && event.getView().getPlayer().hasPermission("compressedblocks.uncompress")) {
-                    System.out.print("IsUnCompressing");
-                    int id = (int) recipeData.getValue();
-                    event.getInventory().setResult(getResultItemStack(items[id]));
-                } else {
-                    event.getInventory().setResult(new ItemStack(Material.AIR));
-                    System.out.print("IsNotUnCompressing");
-                }
             }
 
         // Shapeless Recipes: uncompressing of netherrack, sand and soulsand.
@@ -72,35 +60,15 @@ public class EventOnCraft extends EventBase implements Listener {
     }
 
     /**
-     * Check if the shaped recipe is a registered uncompressing craft.
-     * And return the location (id) of the compressed block on the crafting table.
+     * Check if the shapeless recipe is a registered uncompressing craft.
+     * If true, return also the ItemStack of the compressed block.
      *
      * @param items The items' list on the crafting table of a shaped recipe.
      * @return Boolean true if the recipe is unCompression.
      *                 false if the recipe is not unCompression.
-     *         Integer the location of the compressed block on the table.
-     *                 null if Boolean is false.
+     *         ItemStack The compressed block.
+     *                   null if Boolean is false.
      */
-    private ImmutablePair<Boolean, Integer> isShapedUncompressingCraft(ItemStack[] items) {
-        int itemCompressed = 0;
-        int itemCompressedId = 0;
-
-        // Loop each slot of the crafting table
-        for (int i = 0; i < items.length; ++i) {
-            if (isCompressedBlock(items[i])) {
-                if (itemCompressed != 0) {
-                    return new ImmutablePair<>(false, null);
-                } else {
-                    itemCompressed += 1;
-                    itemCompressedId = i;
-                }
-            } else {
-                return new ImmutablePair<>(false, null);
-            }
-        }
-        return new ImmutablePair<>(true, itemCompressedId);
-    }
-
     private ImmutablePair<Boolean, ItemStack> isShapelessUncompressingCraft(ItemStack[] items) {
         ItemStack itemCompressed = null;
 
@@ -130,6 +98,6 @@ public class EventOnCraft extends EventBase implements Listener {
             return new ItemStack(Material.AIR);
         }
 
-        return EnumUUID.getByName(profile.getProperties().get("typeName").iterator().next().getValue()).getItemStack();
+        return EnumUUID.getByName(profile.getProperties().get("typeName").iterator().next().getValue()).getItemStack(config);
     }
 }

@@ -1,6 +1,7 @@
 package io.github.joffrey4.compressedblocks.util;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
 public enum EnumUUID {
@@ -56,8 +57,12 @@ public enum EnumUUID {
         return value;
     }
 
-    public ItemStack getItemStack() {
-        return itemStack;
+    public ItemStack getItemStack(FileConfiguration config) {
+        if (config.getBoolean(name + ".Uncompressing")) {
+            return itemStack;
+        } else {
+            return new ItemStack(Material.AIR);
+        }
     }
 
     public static EnumUUID getByName(final String name) {
