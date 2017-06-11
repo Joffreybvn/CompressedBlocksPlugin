@@ -43,25 +43,25 @@ public class RegisterBlocks {
     public static void init(Main plugin) {
 
         // Compressed Woods
-        compressedOak = register(new BlockCompressedWood(Material.LOG, 0, "Oak Wood", plugin));
-        compressedSpruce = register(new BlockCompressedWood(Material.LOG, 1, "Spruce Wood", plugin));
-        compressedBirch = register(new BlockCompressedWood(Material.LOG, 2, "Birch Wood", plugin));
-        compressedJungle = register(new BlockCompressedWood(Material.LOG, 3, "Jungle Wood", plugin));
-        compressedAcacia = register(new BlockCompressedWood(Material.LOG_2, 0, "Acacia Wood", plugin));
-        compressedDarkOak = register(new BlockCompressedWood(Material.LOG_2, 1, "Dark Oak Wood", plugin));
+        compressedOak = register(new BlockCompressed(Material.LOG, 0, "Oak Wood", plugin));
+        compressedSpruce = register(new BlockCompressed(Material.LOG, 1, "Spruce Wood", plugin));
+        compressedBirch = register(new BlockCompressed(Material.LOG, 2, "Birch Wood", plugin));
+        compressedJungle = register(new BlockCompressed(Material.LOG, 3, "Jungle Wood", plugin));
+        compressedAcacia = register(new BlockCompressed(Material.LOG_2, 0, "Acacia Wood", plugin));
+        compressedDarkOak = register(new BlockCompressed(Material.LOG_2, 1, "Dark Oak Wood", plugin));
 
         // Compressed Planks
-        compressedOakPlank = register(new BlockCompressedPlank(Material.WOOD, 0, "Oak Plank", plugin));
-        compressedSprucePlank = register(new BlockCompressedPlank(Material.WOOD, 1, "Spruce Plank", plugin));
-        compressedBirchPlank = register(new BlockCompressedPlank(Material.WOOD, 2, "Birch Plank", plugin));
-        compressedJunglePlank = register(new BlockCompressedPlank(Material.WOOD, 3, "Jungle Plank", plugin));
-        compressedAcaciaPlank = register(new BlockCompressedPlank(Material.WOOD, 4, "Acacia Plank", plugin));
-        compressedDarkOakPlank = register(new BlockCompressedPlank(Material.WOOD, 5, "Dark Oak Plank", plugin));
+        compressedOakPlank = register(new BlockCompressed(Material.WOOD, 0, "Oak Plank", plugin));
+        compressedSprucePlank = register(new BlockCompressed(Material.WOOD, 1, "Spruce Plank", plugin));
+        compressedBirchPlank = register(new BlockCompressed(Material.WOOD, 2, "Birch Plank", plugin));
+        compressedJunglePlank = register(new BlockCompressed(Material.WOOD, 3, "Jungle Plank", plugin));
+        compressedAcaciaPlank = register(new BlockCompressed(Material.WOOD, 4, "Acacia Plank", plugin));
+        compressedDarkOakPlank = register(new BlockCompressed(Material.WOOD, 5, "Dark Oak Plank", plugin));
 
         // Compressed Falling Blocks
         compressedGravel = register(new BlockCompressed(Material.GRAVEL, 0, "Gravel", plugin));
         compressedSand = register(new BlockCompressed(Material.SAND, 0, "Sand", plugin));
-        compressedRedSand = register(new BlockCompressedRedSand(Material.SAND, 1, "Red Sand", plugin));
+        compressedRedSand = register(new BlockCompressed(Material.SAND, 1, "Red Sand", plugin));
 
         // Compressed Stone Blocks
         compressedStone = register(new BlockCompressed(Material.STONE, 0, "Stone", plugin));
@@ -72,7 +72,7 @@ public class RegisterBlocks {
         // Others compressed Blocks
         compressedDirt = register(new BlockCompressed(Material.DIRT, 0, "Dirt", plugin));
         compressedCobblestone = register(new BlockCompressed(Material.COBBLESTONE, 0, "Cobblestone", plugin));
-        compressedSoulSand = register(new BlockCompressedSoulSand(Material.SOUL_SAND, 0, "Soul Sand", plugin));
+        compressedSoulSand = register(new BlockCompressed(Material.SOUL_SAND, 0, "Soul Sand", plugin));
         compressedNetherrack = register(new BlockCompressed(Material.NETHERRACK, 0, "Netherrack", plugin));
     }
 

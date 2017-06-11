@@ -10,7 +10,7 @@ public class RegisterEvent implements Listener {
         // Register the Events
         plugin.getServer().getPluginManager().registerEvents(new EventOnCraft(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new EventOnFurnace(plugin), plugin);
-        plugin.getServer().getPluginManager().registerEvents(new EventOnPlace(plugin), plugin);
+        //plugin.getServer().getPluginManager().registerEvents(new EventOnPlace(plugin), plugin);
     }
 
 }
