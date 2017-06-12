@@ -30,11 +30,9 @@ public class EventBase {
 
         // Check if the itemStack is a Skull item of player
         if (itemStack != null && itemStack.getType() == Material.SKULL_ITEM && itemStack.getDurability() == 3) {
-            System.out.print("isCompressedBlock: isSkull");
 
             // Check if the skull has metadata and a displayName
             if (itemStack.hasItemMeta()) {
-                System.out.print("isCompressedBlock: hasmeta & displayname");
 
                 // Retrieve the Gameprofile from metadata
                 skullMeta = (SkullMeta) itemStack.getItemMeta();
@@ -43,11 +41,8 @@ public class EventBase {
                 try {
                     profile = getProfile(skullMeta);
                 } catch (ProfileNotFoundException e) {
-                    System.out.print("isCompressedBlock: error in profile retrieving");
                     return false;
                 }
-
-                System.out.print("isCompressedBlock: profile returned");
 
                 return profile.getProperties().containsKey("typeName");
             }
@@ -55,9 +50,16 @@ public class EventBase {
         return false;
     }
 
+    /**
+     * Return the GameProfile of a given SkullMeta
+     *
+     * @param skullMeta The skullMeta of an skull ItemStack.
+     * @return profile The GameProfile of the skullMeta.
+     */
     public GameProfile getProfile(SkullMeta skullMeta) {
         Field profileField;
         GameProfile profile;
+
         try {
             profileField = skullMeta.getClass().getDeclaredField("profile");
             profileField.setAccessible(true);

@@ -4,7 +4,9 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
-public enum EnumUUID {
+import java.util.Random;
+
+public enum EnumBlockType {
 
     // WOODS
     OAK_WOOD("OakWood", "5f50baf8-a634-4b8d-936c-98ccb91aef1a", new ItemStack(Material.LOG, 9, (short) 0)),
@@ -43,7 +45,7 @@ public enum EnumUUID {
     private final String value;
     private final ItemStack itemStack;
 
-    EnumUUID(final String name, final String value, final ItemStack itemStack) {
+    EnumBlockType(final String name, final String value, final ItemStack itemStack) {
         this.name = name;
         this.value = value;
         this.itemStack = itemStack;
@@ -57,16 +59,28 @@ public enum EnumUUID {
         return value;
     }
 
-    public ItemStack getItemStack(FileConfiguration config) {
-        if (config.getBoolean(name + ".Uncompressing")) {
+    public ItemStack getItemStack(FileConfiguration config, Boolean bypass) {
+        if (bypass || config.getBoolean(name + ".Uncompressing")) {
             return itemStack;
         } else {
             return new ItemStack(Material.AIR);
         }
     }
 
-    public static EnumUUID getByName(final String name) {
-        for (final EnumUUID nvp : values()) {
+    public ItemStack getItemStack(FileConfiguration config) {
+        return getItemStack(config, false);
+    }
+
+    public ItemStack getRandomAmountItemStack(FileConfiguration config, int min, int max) {
+        ItemStack itemStack = getItemStack(config, true);
+
+        Random rand = new Random();
+        itemStack.setAmount(rand.nextInt(max - min + 1) + min);
+        return itemStack;
+    }
+
+    public static EnumBlockType getByName(final String name) {
+        for (final EnumBlockType nvp : values()) {
             if (nvp.getName().equals(name)) {
                 return nvp;
             }

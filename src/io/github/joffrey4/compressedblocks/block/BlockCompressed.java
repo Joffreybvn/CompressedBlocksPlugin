@@ -3,7 +3,7 @@ package io.github.joffrey4.compressedblocks.block;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import io.github.joffrey4.compressedblocks.Main;
-import io.github.joffrey4.compressedblocks.util.EnumUUID;
+import io.github.joffrey4.compressedblocks.util.EnumBlockType;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -50,7 +50,7 @@ public class BlockCompressed {
 
         // Get the skull metadata and initialize a texture profile
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-        GameProfile profile = new GameProfile(UUID.fromString(EnumUUID.getByName(typeName).getValue()), null);
+        GameProfile profile = new GameProfile(UUID.fromString(EnumBlockType.getByName(typeName).getValue()), null);
         profile.getProperties().put("textures", new Property("textures", Base64Coder.encodeString("{textures:{SKIN:{url:\"" + skinURL + "\"}}}")));
         profile.getProperties().put("typeName", new Property("typeName", typeName));
 

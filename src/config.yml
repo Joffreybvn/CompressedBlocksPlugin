@@ -166,15 +166,3 @@ CommonLore:
 #   Cobblestone:
 #   SoulSand:
 #   Netherrack:
-
-
-# -------------------------------------------------------
-#                    LANGUAGE settings
-# -------------------------------------------------------
-
-Lang:
-# PlacingImpossible: Displayed when a player try to place a compressed block in the world.
-  PlacingImpossible: 'You can not place a compressed block in the world !'
-
-# FurnaceImpossible: Displayed when a player try to use a compressed block in a furnace.
-  FurnaceImpossible: 'You can not use a compressed block in a furnace !'
