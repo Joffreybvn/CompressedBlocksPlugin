@@ -2,20 +2,61 @@ name: CompressedBlocks
 version: 1.5
 author: Joffrey4 aka NycoDiValones
 website: https://jbvn.me/cbp/
-description: Save space in your chests by compressing your block !
+description: Save space in your chests by compressing your blocks !
 
 main: io.github.joffrey4.compressedblocks.Main
 database: false
 
+commands:
+  compressedblocks:
+    aliases: [compblocks, cb]
+    description: Commands related to Compressed Blocks
+    usage: |
+      Use /help cb [subcommand] for more informations
+      /cb info - Get general information about the plugin
+      /cb give - Give some compressed blocks to a player
+    permission: compressedblocks.command
+    permission-message: "Lack of permission: compressedblocks.command"
+
+  compressedblocks give:
+    aliases: [compblocks give, cb give]
+    description: Give some compressed blocks to a player.
+    usage: /cb give <player> <item> [amount]
+
+  compressedblocks info:
+    aliases: [compblocks info, cb info]
+    description: Get general information about the Compressed Blocks plugin.
+    usage: /cb info
+
 permissions:
   compressedblocks.*:
-    description: Allow to compress and uncompress all blocks set to true in settings
+    description: Allow to compress and uncompress all blocks set to true in settings.
     children:
+      compressedblocks.command: true
+      compressedblocks.command.give: true
+      compressedblocks.command.info: true
       compressedblocks.compress: true
       compressedblocks.uncompress: true
+
+  compressedblocks.command:
+    description: Allow to give compressed blocks, and have informations about the plugin.
+    default: op
+    children:
+      compressedblocks.command.give: true
+      compressedblocks.command.info: true
+
+  compressedblocks.command.give:
+    description: Allow to give compressed blocks to you and other players.
+    default: op
+
+  compressedblocks.command.info:
+    decription: Allow to get general information about the plugin.
+    default: op
+
   compressedblocks.compress:
     description: Allow to compressed the blocks
     default: true
+
   compressedblocks.uncompress:
     description: Allow to uncompressed the blocks
     default: true

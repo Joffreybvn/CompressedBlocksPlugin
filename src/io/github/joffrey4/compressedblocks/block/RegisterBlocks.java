@@ -1,6 +1,7 @@
 package io.github.joffrey4.compressedblocks.block;
 
 import io.github.joffrey4.compressedblocks.Main;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -82,7 +83,7 @@ public class RegisterBlocks {
         ItemMeta meta = itemStack.getItemMeta();
 
         // Write the DisplayName & the Lore
-        meta.setDisplayName(block.getDisplayName());
+        meta.setDisplayName(ChatColor.GOLD + block.getDisplayName());
         meta.setLore(block.getLore());
 
         itemStack.setItemMeta(meta);

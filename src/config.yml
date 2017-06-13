@@ -17,124 +17,124 @@
 # Enable and disable compression and/or un-compression crafts by setting "true" of "false":
 
 # WOODS (LOGS)
-OakWood:
-  Compressing: true
-  Uncompressing: true
-  Texture: b79bd6534a7d9def47aa7ccc52b330f454520eb18dbaf6959ff1ba8f4c03
+oakwood:
+  compressing: true
+  uncompressing: true
+  texture: b79bd6534a7d9def47aa7ccc52b330f454520eb18dbaf6959ff1ba8f4c03
 
-SpruceWood:
-  Compressing: true
-  Uncompressing: true
-  Texture: c1a3ea81b18cd5891fadfae2f91407173d83cea23d62a21d7236ab36a2eba
+sprucewood:
+  compressing: true
+  uncompressing: true
+  texture: c1a3ea81b18cd5891fadfae2f91407173d83cea23d62a21d7236ab36a2eba
 
-BirchWood:
-  Compressing: true
-  Uncompressing: true
-  Texture: d2521df5fe65b4b57b7ce5eb4d057fb406351dda1ce64e984e14ee0fd52f8c7
+birchwood:
+  compressing: true
+  uncompressing: true
+  texture: d2521df5fe65b4b57b7ce5eb4d057fb406351dda1ce64e984e14ee0fd52f8c7
 
-JungleWood:
-  Compressing: true
-  Uncompressing: true
-  Texture: 9abf47a92f40451a32aac2e3f0a577edfc65d33d3e557995c94b318fe1e61
+junglewood:
+  compressing: true
+  uncompressing: true
+  texture: 9abf47a92f40451a32aac2e3f0a577edfc65d33d3e557995c94b318fe1e61
 
-AcaciaWood:
-  Compressing: true
-  Uncompressing: true
-  Texture: afb0375540965e555ceb156aa67b4e656a422c9dfe498e88f676ac1116fa8d
+acaciawood:
+  compressing: true
+  uncompressing: true
+  texture: afb0375540965e555ceb156aa67b4e656a422c9dfe498e88f676ac1116fa8d
 
-DarkOakWood:
-  Compressing: true
-  Uncompressing: true
-  Texture: 1b381cce56443bdf736cbd26c97919807fcf35548ad7f151db4d84218e6dc6b4
+darkoakwood:
+  compressing: true
+  uncompressing: true
+  texture: 1b381cce56443bdf736cbd26c97919807fcf35548ad7f151db4d84218e6dc6b4
 
 # PLANKS
-OakPlank:
-  Compressing: true
-  Uncompressing: true
-  Texture: 3e31d0901888cbe6e97f90cf51a3bdd4ced79d3c1ef66397a031198f6d298b22
+oakplank:
+  compressing: true
+  uncompressing: true
+  texture: 3e31d0901888cbe6e97f90cf51a3bdd4ced79d3c1ef66397a031198f6d298b22
 
-SprucePlank:
-  Compressing: true
-  Uncompressing: true
-  Texture: b15a81bf3a1908df82b4a48bf03723127d095716e9ee885d79bac35bedbae
+spruceplank:
+  compressing: true
+  uncompressing: true
+  texture: b15a81bf3a1908df82b4a48bf03723127d095716e9ee885d79bac35bedbae
 
-BirchPlank:
-  Compressing: true
-  Uncompressing: true
-  Texture: 784ce9ab5e32810becc5f5f489f4da138db484887faf67342440614549af36
+birchplank:
+  compressing: true
+  uncompressing: true
+  texture: 784ce9ab5e32810becc5f5f489f4da138db484887faf67342440614549af36
 
-JunglePlank:
-  Compressing: true
-  Uncompressing: true
-  Texture: 5d84868a9c8c4994fb61a970c44ccd13296d3fd68067c7f3e8b7f7b0d2d838bb
+jungleplank:
+  compressing: true
+  uncompressing: true
+  texture: 5d84868a9c8c4994fb61a970c44ccd13296d3fd68067c7f3e8b7f7b0d2d838bb
 
-AcaciaPlank:
-  Compressing: true
-  Uncompressing: true
-  Texture: fb497bd15763e1e9325d58ce62687dd771322c5f8cd9996f5eb32a3ea052ef66
+acaciaplank:
+  compressing: true
+  uncompressing: true
+  texture: fb497bd15763e1e9325d58ce62687dd771322c5f8cd9996f5eb32a3ea052ef66
 
-DarkOakPlank:
-  Compressing: true
-  Uncompressing: true
-  Texture: 2e48fefb5ef4ae56c95a99ae7d032d13bef49ca0cdfa87fe9b1b179d2ba0
+darkoakplank:
+  compressing: true
+  uncompressing: true
+  texture: 2e48fefb5ef4ae56c95a99ae7d032d13bef49ca0cdfa87fe9b1b179d2ba0
 
 # FALLING Blocks
-Gravel:
-  Compressing: true
-  Uncompressing: true
-  Texture: 6e6c59ee744f3cfbe9b71e57a8b53f1e3ea0b1beb7c4e3fec7e7623b8e1c8
+gravel:
+  compressing: true
+  uncompressing: true
+  texture: 6e6c59ee744f3cfbe9b71e57a8b53f1e3ea0b1beb7c4e3fec7e7623b8e1c8
 
-Sand:
-  Compressing: true
-  Uncompressing: true
-  Texture: d68995bb9d761a6df03d4f69db535383571323fb541457ec42b3ec62c0fbc8
+sand:
+  compressing: true
+  uncompressing: true
+  texture: d68995bb9d761a6df03d4f69db535383571323fb541457ec42b3ec62c0fbc8
 
-RedSand:
-  Compressing: true
-  Uncompressing: true
-  Texture: e2143b9675bbb879ef3f83773fc4e279dbb4ee4dcf8fd32746e2da218998327
+redsand:
+  compressing: true
+  uncompressing: true
+  texture: e2143b9675bbb879ef3f83773fc4e279dbb4ee4dcf8fd32746e2da218998327
 
 # STONE Blocks
-Stone:
-  Compressing: true
-  Uncompressing: true
-  Texture: f7ff2859d4719f9145a2a1d8b019a47bd26f7c812fba3333666868f1019b9e6
+stone:
+  compressing: true
+  uncompressing: true
+  texture: f7ff2859d4719f9145a2a1d8b019a47bd26f7c812fba3333666868f1019b9e6
 
-Granite:
-  Compressing: true
-  Uncompressing: true
-  Texture: 7e32d31edf8cfd9e29fd934d9a381c72398c03fbd37155034a658814b93573
+granite:
+  compressing: true
+  uncompressing: true
+  texture: 7e32d31edf8cfd9e29fd934d9a381c72398c03fbd37155034a658814b93573
 
-Diorite:
-  Compressing: true
-  Uncompressing: true
-  Texture: eac080f897dcbc76d14172f61a318b381fee8ca0495aada76aceac3de218c742
+diorite:
+  compressing: true
+  uncompressing: true
+  texture: eac080f897dcbc76d14172f61a318b381fee8ca0495aada76aceac3de218c742
 
-Andesite:
-  Compressing: true
-  Uncompressing: true
-  Texture: c15fa0d74b34425b3d6217d5c9b9528dbc885d353faa8d02e680cd78b886
+andesite:
+  compressing: true
+  uncompressing: true
+  texture: c15fa0d74b34425b3d6217d5c9b9528dbc885d353faa8d02e680cd78b886
 
 # OTHER Blocks
-Dirt:
-  Compressing: true
-  Uncompressing: true
-  Texture: 21a1e1916ccd5c3716bf82585b83ddd1be5fe087a14c6341c76db51ea2ed583
+dirt:
+  compressing: true
+  uncompressing: true
+  texture: 21a1e1916ccd5c3716bf82585b83ddd1be5fe087a14c6341c76db51ea2ed583
 
-Cobblestone:
-  Compressing: true
-  Uncompressing: true
-  Texture: 5d7a50f69638b5f9dbb18f2fb93e5ee5d922f9a3c5a50593bb64bba42bb31e
+cobblestone:
+  compressing: true
+  uncompressing: true
+  texture: 5d7a50f69638b5f9dbb18f2fb93e5ee5d922f9a3c5a50593bb64bba42bb31e
 
-SoulSand:
-  Compressing: true
-  Uncompressing: true
-  Texture: 46fb3178630fc3a58e15944a8fc1cdcaf45965824d8b31ff66f88f024e64bc
+soulsand:
+  compressing: true
+  uncompressing: true
+  texture: 46fb3178630fc3a58e15944a8fc1cdcaf45965824d8b31ff66f88f024e64bc
 
-Netherrack:
-  Compressing: true
-  Uncompressing: true
-  Texture: a9c4791edd24634137e0b191dc68e4337bceb5a3b3bc08f264a8447ee69b27a
+netherrack:
+  compressing: true
+  uncompressing: true
+  texture: a9c4791edd24634137e0b191dc68e4337bceb5a3b3bc08f264a8447ee69b27a
 
 
 # -------------------------------------------------------
@@ -145,12 +145,19 @@ Netherrack:
 # Use '&type' to write automatically the block type (ex 'Cobblestone' for Compressed Cobblestone).
 # Lore modification is applied only to newly compressed block.
 
-UseCommonLore: true
-CommonLore:
-  - 'A block that contain'
-  - '9x &type !'
+lore:
+  usecommon: true
+  common:
+    - 'A block that contain'
+    - '9x &type !'
 
-# DetailedLore:
+  detailed:
+    oakwood:
+      - 'Another lore specific'
+      - 'to the &type !'
+
+
+# detailedlore:
 #   Wood:
 #     - 'Another lore specific'
 #     - 'to the &type !'

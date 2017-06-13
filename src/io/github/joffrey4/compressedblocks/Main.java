@@ -1,6 +1,7 @@
 package io.github.joffrey4.compressedblocks;
 
 import io.github.joffrey4.compressedblocks.block.RegisterBlocks;
+import io.github.joffrey4.compressedblocks.command.RegisterCommand;
 import io.github.joffrey4.compressedblocks.event.RegisterEvent;
 import io.github.joffrey4.compressedblocks.recipe.RegisterRecipes;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,6 +21,9 @@ public class Main extends JavaPlugin {
 
         // Initialize plugin mechanics
         RegisterEvent.init(this);
+
+        // Initialize commands
+        RegisterCommand.init(this);
     }
 
 

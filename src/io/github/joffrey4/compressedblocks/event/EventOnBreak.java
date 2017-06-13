@@ -2,7 +2,7 @@ package io.github.joffrey4.compressedblocks.event;
 
 import com.mojang.authlib.GameProfile;
 import io.github.joffrey4.compressedblocks.Main;
-import io.github.joffrey4.compressedblocks.util.EnumBlockType;
+import io.github.joffrey4.compressedblocks.util.Enum;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
@@ -24,7 +24,7 @@ public class EventOnBreak extends EventBase implements Listener {
     }
 
     /**
-     * Placed compressed blocks drops a stack of 9 uncompressed blocks when they are destroyed.
+     * Placed compressed blocks drops a random stack of uncompressed blocks when they are destroyed.
      * @param event BlockBreakEvent
      */
     @EventHandler
@@ -40,19 +40,18 @@ public class EventOnBreak extends EventBase implements Listener {
                 GameProfile skullProfile = skull.getTileEntity().getGameProfile();
 
                 // Check if the skull is a compressed block
-                if (skullProfile != null && skullProfile.getProperties().containsKey("typeName")) {
+                if (skullProfile != null && skullProfile.getProperties().containsKey("compBlocksName")) {
 
                     // Reset the block to AIR to avoid it to drop anything
                     event.getBlock().setType(Material.AIR);
 
                     // Drop a stack of the uncompressed blocks
                     Location location = event.getBlock().getLocation().add(0.5F, 0.5F, 0.5F);
-                    ItemStack dropStack = EnumBlockType.getByName(skullProfile.getProperties().get("typeName").iterator().next().getValue()).getRandomAmountItemStack(config, 5, 8);
+                    ItemStack dropStack = Enum.getByName(skullProfile.getProperties().get("compBlocksName").iterator().next().getValue()).getRandUncompBlocks(config, 5, 8);
 
                     event.getBlock().getWorld().dropItemNaturally(location, dropStack);
                 }
             }
         }
-
     }
 }
