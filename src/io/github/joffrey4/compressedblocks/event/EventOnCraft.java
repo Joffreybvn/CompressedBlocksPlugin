@@ -4,9 +4,11 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.yggdrasil.ProfileNotFoundException;
 import io.github.joffrey4.compressedblocks.Main;
 import io.github.joffrey4.compressedblocks.util.Enum;
+import io.github.joffrey4.compressedblocks.util.EnumSwitch;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
@@ -33,11 +35,8 @@ public class EventOnCraft extends EventBase implements Listener {
         if (event.getRecipe() instanceof ShapedRecipe) {
 
             // Allow compressing only if the player has the permission
-            if (isCompressedBlock(event.getRecipe().getResult())) {
-
-                if (!event.getView().getPlayer().hasPermission("compressedblocks.compress")) {
-                    event.getInventory().setResult(new ItemStack(Material.AIR));
-                }
+            if (event.getView().getPlayer() instanceof Player && isCompressedBlock(event.getRecipe().getResult())) {
+                event.getInventory().setResult(getCompressingResult(event.getRecipe().getResult(), (Player) event.getView().getPlayer()));
             }
 
         // Shapeless Recipes: uncompressing of netherrack, sand and soulsand.
@@ -45,13 +44,9 @@ public class EventOnCraft extends EventBase implements Listener {
 
             // Allow uncompressing if the player has the permission
             ImmutablePair recipeData = isShapelessUncompressingCraft(items);
-            if ((Boolean) recipeData.getKey()) {
 
-                if (event.getView().getPlayer().hasPermission("compressedblocks.uncompress")) {
-                    event.getInventory().setResult(getResultItemStack((ItemStack) recipeData.getValue()));
-                } else {
-                    event.getInventory().setResult(new ItemStack(Material.AIR));
-                }
+            if ((Boolean) recipeData.getKey() && event.getView().getPlayer() instanceof Player) {
+                event.getInventory().setResult(getUncompressingResult((ItemStack) recipeData.getValue(), (Player) event.getView().getPlayer()));
             }
         }
     }
@@ -91,7 +86,7 @@ public class EventOnCraft extends EventBase implements Listener {
      * @param itemStack The compressed block ItemStack.
      * @return ItemStack The stack of uncompressed blocks resulting of the un-compression.
      */
-    private ItemStack getResultItemStack(ItemStack itemStack) {
+    private ItemStack getUncompressingResult(ItemStack itemStack, Player player) {
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
         GameProfile profile;
 
@@ -101,6 +96,26 @@ public class EventOnCraft extends EventBase implements Listener {
             return new ItemStack(Material.AIR);
         }
 
-        return Enum.getByName(profile.getProperties().get("compBlocksName").iterator().next().getValue()).getUncompBlocks(config);
+        return Enum.getByName(profile.getProperties().get("compBlocksName").iterator().next().getValue()).getUncompBlocks(player);
+    }
+
+    /**
+     * Return the ItemStack resulting of the compression of some blocks.
+     *
+     * @param itemStack The compressed block ItemStack.
+     * @return ItemStack The stack of compressed blocks resulting of the compression.
+     */
+    private ItemStack getCompressingResult(ItemStack itemStack, Player player) {
+        SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+        GameProfile profile;
+
+        try {
+            profile = getProfile(skullMeta);
+        } catch (ProfileNotFoundException e) {
+            return new ItemStack(Material.AIR);
+        }
+
+        Enum compBlock = Enum.getByName(profile.getProperties().get("compBlocksName").iterator().next().getValue());
+        return new EnumSwitch(compBlock).getCraftedCompressedBlocks(player);
     }
 }

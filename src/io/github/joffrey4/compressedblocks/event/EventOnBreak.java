@@ -47,7 +47,7 @@ public class EventOnBreak extends EventBase implements Listener {
 
                     // Drop a stack of the uncompressed blocks
                     Location location = event.getBlock().getLocation().add(0.5F, 0.5F, 0.5F);
-                    ItemStack dropStack = Enum.getByName(skullProfile.getProperties().get("compBlocksName").iterator().next().getValue()).getRandUncompBlocks(config, 5, 8);
+                    ItemStack dropStack = Enum.getByName(skullProfile.getProperties().get("compBlocksName").iterator().next().getValue()).getRandUncompBlocks(5, 8);
 
                     event.getBlock().getWorld().dropItemNaturally(location, dropStack);
                 }

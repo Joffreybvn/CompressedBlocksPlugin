@@ -53,10 +53,10 @@ public class BlockCompressed {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
 
         String skinURL = "http://textures.minecraft.net/texture/";
-        if (config.getString(name + ".texture").isEmpty()) {
+        if (config.getString("texture." + name).isEmpty()) {
             return skull;
         } else {
-            skinURL += config.getString(name + ".texture");
+            skinURL += config.getString("texture." + name);
         }
 
         // Get the skull metadata and initialize a texture profile

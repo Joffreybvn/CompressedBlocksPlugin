@@ -7,6 +7,7 @@ description: Save space in your chests by compressing your blocks !
 main: io.github.joffrey4.compressedblocks.Main
 database: false
 
+# COMMANDS
 commands:
   compressedblocks:
     aliases: [compblocks, cb]
@@ -28,35 +29,276 @@ commands:
     description: Get general information about the Compressed Blocks plugin.
     usage: /cb info
 
+# PERMISSIONS - General
 permissions:
   compressedblocks.*:
-    description: Allow to compress and uncompress all blocks set to true in settings.
+    description: Give all Compressed Blocks permissions.
+    default: false
+    children:
+      compressedblocks.all: true
+
+  compressedblocks.all:
+    description: Give all Compressed Blocks permissions.
+    default: false
     children:
       compressedblocks.command: true
-      compressedblocks.command.give: true
-      compressedblocks.command.info: true
       compressedblocks.compress: true
       compressedblocks.uncompress: true
 
+# PERMISSIONS - Command
   compressedblocks.command:
     description: Allow to give compressed blocks, and have informations about the plugin.
     default: op
+    children:
+      compressedblocks.command.*: true
+
+  compressedblocks.command.*:
+    description: Allow to give compressed blocks, and have informations about the plugin.
+    children:
+      compressedblocks.command.all: true
+
+  compressedblocks.command.all:
+    description: Allow to give compressed blocks, and have informations about the plugin.
     children:
       compressedblocks.command.give: true
       compressedblocks.command.info: true
 
   compressedblocks.command.give:
     description: Allow to give compressed blocks to you and other players.
-    default: op
 
   compressedblocks.command.info:
     decription: Allow to get general information about the plugin.
-    default: op
 
+# PERMISSIONS - Compress
   compressedblocks.compress:
-    description: Allow to compressed the blocks
-    default: true
+    description: Allow to compressed all kind of blocks
+    default: false
+    children:
+      compressedblocks.compress.*: true
 
+  compressedblocks.compress.*:
+    description: Allow to compressed all kind of blocks
+    children:
+      compressedblocks.compress.all: true
+
+  compressedblocks.compress.all:
+    description: Allow to compressed all kind of blocks
+    children:
+      compressedblocks.compress.oakwood: true
+      compressedblocks.compress.sprucewood: true
+      compressedblocks.compress.birchwood: true
+      compressedblocks.compress.junglewood: true
+      compressedblocks.compress.acaciawood: true
+      compressedblocks.compress.darkoakwood: true
+
+      compressedblocks.compress.oakplank: true
+      compressedblocks.compress.spruceplank: true
+      compressedblocks.compress.birchplank: true
+      compressedblocks.compress.jungleplank: true
+      compressedblocks.compress.acaciaplank: true
+      compressedblocks.compress.darkoakplank: true
+
+      compressedblocks.compress.gravel: true
+      compressedblocks.compress.sand: true
+      compressedblocks.compress.redsand: true
+
+      compressedblocks.compress.stone: true
+      compressedblocks.compress.granite: true
+      compressedblocks.compress.diorite: true
+      compressedblocks.compress.andesite: true
+
+      compressedblocks.compress.dirt: true
+      compressedblocks.compress.cobblestone: true
+      compressedblocks.compress.soulsand: true
+      compressedblocks.compress.netherrack: true
+
+# PERMISSIONS - Compress - WOODS (Logs)
+  compressedblocks.compress.oakwood:
+    description: Allow to compressed Oak Wood
+
+  compressedblocks.compress.sprucewood:
+    description: Allow to compressed Spruce Wood
+
+  compressedblocks.compress.birchwood:
+    description: Allow to compressed Birch Wood
+
+  compressedblocks.compress.junglewood:
+    description: Allow to compressed Jungle Wood
+
+  compressedblocks.compress.acaciawood:
+    description: Allow to compressed Acacia Wood
+
+  compressedblocks.compress.darkoakwood:
+    description: Allow to compressed Dark Oak Wood
+
+# PERMISSIONS - Compress - PLANKS
+  compressedblocks.compress.oakplank:
+    description: Allow to compressed Oak Plank
+
+  compressedblocks.compress.spruceplank:
+    description: Allow to compressed Spruce Plank
+
+  compressedblocks.compress.birchplank:
+    description: Allow to compressed Birch Plank
+
+  compressedblocks.compress.jungleplank:
+    description: Allow to compressed Jungle Plank
+
+  compressedblocks.compress.acaciaplank:
+    description: Allow to compressed Acacia Plank
+
+  compressedblocks.compress.darkoakplank:
+    description: Allow to compressed Dark Oak Plank
+
+# PERMISSIONS - Compress - FALLING blocks
+  compressedblocks.compress.gravel:
+    description: Allow to compressed Gravel
+
+  compressedblocks.compress.sand:
+    description: Allow to compressed Sand
+
+  compressedblocks.compress.redsand:
+    description: Allow to compressed Red Sand
+
+# PERMISSIONS - Compress - STONE blocks
+  compressedblocks.compress.stone:
+    description: Allow to compressed Stone
+
+  compressedblocks.compress.granite:
+    description: Allow to compressed Granite
+
+  compressedblocks.compress.diorite:
+    description: Allow to compressed Diorite
+
+  compressedblocks.compress.andesite:
+    description: Allow to compressed Andesite
+
+# PERMISSIONS - Compress - OTHER blocks
+  compressedblocks.compress.dirt:
+    description: Allow to compressed Dirt
+
+  compressedblocks.compress.cobblestone:
+    description: Allow to compressed Cobblestone
+
+  compressedblocks.compress.soulsand:
+    description: Allow to compressed Soul Sand
+
+  compressedblocks.compress.netherrack:
+    description: Allow to compressed Netherrack
+
+# PERMISSIONS - Uncompress
   compressedblocks.uncompress:
-    description: Allow to uncompressed the blocks
-    default: true
+    description: Allow to uncompressed all kind of blocks
+    default: false
+    children:
+      compressedblocks.uncompress.*: true
+
+  compressedblocks.uncompress.*:
+    description: Allow to uncompressed all kind of blocks
+    children:
+      compressedblocks.uncompress.all: true
+
+  compressedblocks.uncompress.all:
+    description: Allow to uncompressed all kind of blocks
+    children:
+      compressedblocks.uncompress.oakwood: true
+      compressedblocks.uncompress.sprucewood: true
+      compressedblocks.uncompress.birchwood: true
+      compressedblocks.uncompress.junglewood: true
+      compressedblocks.uncompress.acaciawood: true
+      compressedblocks.uncompress.darkoakwood: true
+
+      compressedblocks.uncompress.oakplank: true
+      compressedblocks.uncompress.spruceplank: true
+      compressedblocks.uncompress.birchplank: true
+      compressedblocks.uncompress.jungleplank: true
+      compressedblocks.uncompress.acaciaplank: true
+      compressedblocks.uncompress.darkoakplank: true
+
+      compressedblocks.uncompress.gravel: true
+      compressedblocks.uncompress.sand: true
+      compressedblocks.uncompress.redsand: true
+
+      compressedblocks.uncompress.stone: true
+      compressedblocks.uncompress.granite: true
+      compressedblocks.uncompress.diorite: true
+      compressedblocks.uncompress.andesite: true
+
+      compressedblocks.uncompress.dirt: true
+      compressedblocks.uncompress.cobblestone: true
+      compressedblocks.uncompress.soulsand: true
+      compressedblocks.uncompress.netherrack: true
+
+# PERMISSIONS - Uncompress - WOODS (Logs)
+  compressedblocks.uncompress.oakwood:
+    description: Allow to uncompress Oak Wood
+
+  compressedblocks.uncompress.sprucewood:
+    description: Allow to uncompress Spruce Wood
+
+  compressedblocks.uncompress.birchwood:
+    description: Allow to uncompress Birch Wood
+
+  compressedblocks.uncompress.junglewood:
+    description: Allow to uncompress Jungle Wood
+
+  compressedblocks.uncompress.acaciawood:
+    description: Allow to uncompress Acacia Wood
+
+  compressedblocks.uncompress.darkoakwood:
+    description: Allow to uncompress Dark Oak Wood
+
+# PERMISSIONS - Uncompress - PLANKS
+  compressedblocks.uncompress.oakplank:
+    description: Allow to uncompress Oak Plank
+
+  compressedblocks.uncompress.spruceplank:
+    description: Allow to uncompress Spruce Plank
+
+  compressedblocks.uncompress.birchplank:
+    description: Allow to uncompress Birch Plank
+
+  compressedblocks.uncompress.jungleplank:
+    description: Allow to uncompress Jungle Plank
+
+  compressedblocks.uncompress.acaciaplank:
+    description: Allow to uncompress Acacia Plank
+
+  compressedblocks.uncompress.darkoakplank:
+    description: Allow to uncompress Dark Oak Plank
+
+# PERMISSIONS - Uncompress - FALLING blocks
+  compressedblocks.uncompress.gravel:
+    description: Allow to uncompress Gravel
+
+  compressedblocks.uncompress.sand:
+    description: Allow to uncompress Sand
+
+  compressedblocks.uncompress.redsand:
+    description: Allow to uncompress Red Sand
+
+# PERMISSIONS - Uncompress - STONE blocks
+  compressedblocks.uncompress.stone:
+    description: Allow to uncompress Stone
+
+  compressedblocks.uncompress.granite:
+    description: Allow to uncompress Granite
+
+  compressedblocks.uncompress.diorite:
+    description: Allow to uncompress Diorite
+
+  compressedblocks.uncompress.andesite:
+    description: Allow to uncompress Andesite
+
+# PERMISSIONS - Uncompress - OTHER blocks
+  compressedblocks.uncompress.dirt:
+    description: Allow to uncompress Dirt
+
+  compressedblocks.uncompress.cobblestone:
+    description: Allow to uncompress Cobblestone
+
+  compressedblocks.uncompress.soulsand:
+    description: Allow to uncompress Soul Sand
+
+  compressedblocks.uncompress.netherrack:
+    description: Allow to uncompress Netherrack

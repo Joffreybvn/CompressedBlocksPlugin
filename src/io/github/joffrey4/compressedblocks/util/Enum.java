@@ -1,7 +1,7 @@
 package io.github.joffrey4.compressedblocks.util;
 
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
@@ -59,20 +59,20 @@ public enum Enum {
         return uuid;
     }
 
-    public ItemStack getUncompBlocks(FileConfiguration config, Boolean bypass) {
-        if (bypass || config.getBoolean(name + ".uncompressing")) {
+    public ItemStack getUncompBlocks(Player player, Boolean bypass) {
+        if (bypass || player.hasPermission("compressedblocks.uncompress." + name)) {
             return uncompBlocks;
         } else {
             return new ItemStack(Material.AIR);
         }
     }
 
-    public ItemStack getUncompBlocks(FileConfiguration config) {
-        return getUncompBlocks(config, false);
+    public ItemStack getUncompBlocks(Player player) {
+        return getUncompBlocks(player, false);
     }
 
-    public ItemStack getRandUncompBlocks(FileConfiguration config, int min, int max) {
-        ItemStack itemStack = getUncompBlocks(config, true).clone();
+    public ItemStack getRandUncompBlocks(int min, int max) {
+        ItemStack itemStack = getUncompBlocks(null, true).clone();
 
         Random rand = new Random();
         itemStack.setAmount(rand.nextInt(max - min + 1) + min);

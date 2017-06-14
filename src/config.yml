@@ -4,146 +4,16 @@
 # <             Docs: https://jbvn.me/cbp/             >
 # ======================================================
 
-# This configuration file was generated in v1.5.
-# Please respect the indentation (2 spaces).
-
-# If any change are made in a future version, you will need to add the missing parameters
-# on your own, or to generate a new configuration file by deleting this one.
+# This configuration file was generated in version 2.0
+# Always use SPACE for indentation, instead of TAB.
 
 
 # -------------------------------------------------------
-#                     BLOCKS settings
+#                  BLOCK LORES settings
 # -------------------------------------------------------
-# Enable and disable compression and/or un-compression crafts by setting "true" of "false":
-
-# WOODS (LOGS)
-oakwood:
-  compressing: true
-  uncompressing: true
-  texture: b79bd6534a7d9def47aa7ccc52b330f454520eb18dbaf6959ff1ba8f4c03
-
-sprucewood:
-  compressing: true
-  uncompressing: true
-  texture: c1a3ea81b18cd5891fadfae2f91407173d83cea23d62a21d7236ab36a2eba
-
-birchwood:
-  compressing: true
-  uncompressing: true
-  texture: d2521df5fe65b4b57b7ce5eb4d057fb406351dda1ce64e984e14ee0fd52f8c7
-
-junglewood:
-  compressing: true
-  uncompressing: true
-  texture: 9abf47a92f40451a32aac2e3f0a577edfc65d33d3e557995c94b318fe1e61
-
-acaciawood:
-  compressing: true
-  uncompressing: true
-  texture: afb0375540965e555ceb156aa67b4e656a422c9dfe498e88f676ac1116fa8d
-
-darkoakwood:
-  compressing: true
-  uncompressing: true
-  texture: 1b381cce56443bdf736cbd26c97919807fcf35548ad7f151db4d84218e6dc6b4
-
-# PLANKS
-oakplank:
-  compressing: true
-  uncompressing: true
-  texture: 3e31d0901888cbe6e97f90cf51a3bdd4ced79d3c1ef66397a031198f6d298b22
-
-spruceplank:
-  compressing: true
-  uncompressing: true
-  texture: b15a81bf3a1908df82b4a48bf03723127d095716e9ee885d79bac35bedbae
-
-birchplank:
-  compressing: true
-  uncompressing: true
-  texture: 784ce9ab5e32810becc5f5f489f4da138db484887faf67342440614549af36
-
-jungleplank:
-  compressing: true
-  uncompressing: true
-  texture: 5d84868a9c8c4994fb61a970c44ccd13296d3fd68067c7f3e8b7f7b0d2d838bb
-
-acaciaplank:
-  compressing: true
-  uncompressing: true
-  texture: fb497bd15763e1e9325d58ce62687dd771322c5f8cd9996f5eb32a3ea052ef66
-
-darkoakplank:
-  compressing: true
-  uncompressing: true
-  texture: 2e48fefb5ef4ae56c95a99ae7d032d13bef49ca0cdfa87fe9b1b179d2ba0
-
-# FALLING Blocks
-gravel:
-  compressing: true
-  uncompressing: true
-  texture: 6e6c59ee744f3cfbe9b71e57a8b53f1e3ea0b1beb7c4e3fec7e7623b8e1c8
-
-sand:
-  compressing: true
-  uncompressing: true
-  texture: d68995bb9d761a6df03d4f69db535383571323fb541457ec42b3ec62c0fbc8
-
-redsand:
-  compressing: true
-  uncompressing: true
-  texture: e2143b9675bbb879ef3f83773fc4e279dbb4ee4dcf8fd32746e2da218998327
-
-# STONE Blocks
-stone:
-  compressing: true
-  uncompressing: true
-  texture: f7ff2859d4719f9145a2a1d8b019a47bd26f7c812fba3333666868f1019b9e6
-
-granite:
-  compressing: true
-  uncompressing: true
-  texture: 7e32d31edf8cfd9e29fd934d9a381c72398c03fbd37155034a658814b93573
-
-diorite:
-  compressing: true
-  uncompressing: true
-  texture: eac080f897dcbc76d14172f61a318b381fee8ca0495aada76aceac3de218c742
-
-andesite:
-  compressing: true
-  uncompressing: true
-  texture: c15fa0d74b34425b3d6217d5c9b9528dbc885d353faa8d02e680cd78b886
-
-# OTHER Blocks
-dirt:
-  compressing: true
-  uncompressing: true
-  texture: 21a1e1916ccd5c3716bf82585b83ddd1be5fe087a14c6341c76db51ea2ed583
-
-cobblestone:
-  compressing: true
-  uncompressing: true
-  texture: 5d7a50f69638b5f9dbb18f2fb93e5ee5d922f9a3c5a50593bb64bba42bb31e
-
-soulsand:
-  compressing: true
-  uncompressing: true
-  texture: 46fb3178630fc3a58e15944a8fc1cdcaf45965824d8b31ff66f88f024e64bc
-
-netherrack:
-  compressing: true
-  uncompressing: true
-  texture: a9c4791edd24634137e0b191dc68e4337bceb5a3b3bc08f264a8447ee69b27a
-
-
-# -------------------------------------------------------
-#                     LORES settings
-# -------------------------------------------------------
-# Use a common lore for all of your block by setting 'UseCommonLore' to true. You can also write
-# specific lore for certain block by setting it to false, and by editing the detailed lore below.
-# Use '&type' to write automatically the block type (ex 'Cobblestone' for Compressed Cobblestone).
-# Lore modification is applied only to newly compressed block.
+# WARNING: Do not edit the lores if you have already setup a server, and compressed some blocks.
+# The newly compressed blocks (with the new lore) will not be stackable with the old ones.
+# Information about how to edit a lore: https://jbvn.me/cbp/
 
 lore:
   usecommon: true
@@ -173,3 +43,45 @@ lore:
 #   Cobblestone:
 #   SoulSand:
 #   Netherrack:
+
+
+# -------------------------------------------------------
+#                BLOCK TEXTURES settings
+# -------------------------------------------------------
+# WARNING: Do not edit the textures if you have already setup a server, and compressed some blocks.
+# Changing the texture will result in the lose of all compressed blocks previously made.
+# Information about how to edit a texture: https://jbvn.me/cbp/
+
+texture:
+# WOODS (LOGS)
+  oakwood: b79bd6534a7d9def47aa7ccc52b330f454520eb18dbaf6959ff1ba8f4c03
+  sprucewood: c1a3ea81b18cd5891fadfae2f91407173d83cea23d62a21d7236ab36a2eba
+  birchwood: d2521df5fe65b4b57b7ce5eb4d057fb406351dda1ce64e984e14ee0fd52f8c7
+  junglewood: 9abf47a92f40451a32aac2e3f0a577edfc65d33d3e557995c94b318fe1e61
+  acaciawood: afb0375540965e555ceb156aa67b4e656a422c9dfe498e88f676ac1116fa8d
+  darkoakwood: 1b381cce56443bdf736cbd26c97919807fcf35548ad7f151db4d84218e6dc6b4
+
+# PLANKS
+  oakplank: 3e31d0901888cbe6e97f90cf51a3bdd4ced79d3c1ef66397a031198f6d298b22
+  spruceplank: b15a81bf3a1908df82b4a48bf03723127d095716e9ee885d79bac35bedbae
+  birchplank: 784ce9ab5e32810becc5f5f489f4da138db484887faf67342440614549af36
+  jungleplank: 5d84868a9c8c4994fb61a970c44ccd13296d3fd68067c7f3e8b7f7b0d2d838bb
+  acaciaplank: fb497bd15763e1e9325d58ce62687dd771322c5f8cd9996f5eb32a3ea052ef66
+  darkoakplank: 2e48fefb5ef4ae56c95a99ae7d032d13bef49ca0cdfa87fe9b1b179d2ba0
+
+# FALLING Blocks
+  gravel: 6e6c59ee744f3cfbe9b71e57a8b53f1e3ea0b1beb7c4e3fec7e7623b8e1c8
+  sand: d68995bb9d761a6df03d4f69db535383571323fb541457ec42b3ec62c0fbc8
+  redsand: e2143b9675bbb879ef3f83773fc4e279dbb4ee4dcf8fd32746e2da218998327
+
+# STONE Blocks
+  stone: f7ff2859d4719f9145a2a1d8b019a47bd26f7c812fba3333666868f1019b9e6
+  granite: 7e32d31edf8cfd9e29fd934d9a381c72398c03fbd37155034a658814b93573
+  diorite: eac080f897dcbc76d14172f61a318b381fee8ca0495aada76aceac3de218c742
+  andesite: c15fa0d74b34425b3d6217d5c9b9528dbc885d353faa8d02e680cd78b886
+
+# OTHER Blocks
+  dirt: 21a1e1916ccd5c3716bf82585b83ddd1be5fe087a14c6341c76db51ea2ed583
+  cobblestone: 5d7a50f69638b5f9dbb18f2fb93e5ee5d922f9a3c5a50593bb64bba42bb31e
+  soulsand: 46fb3178630fc3a58e15944a8fc1cdcaf45965824d8b31ff66f88f024e64bc
+  netherrack: a9c4791edd24634137e0b191dc68e4337bceb5a3b3bc08f264a8447ee69b27a

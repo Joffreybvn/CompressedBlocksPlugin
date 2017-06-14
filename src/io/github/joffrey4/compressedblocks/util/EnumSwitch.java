@@ -2,6 +2,7 @@ package io.github.joffrey4.compressedblocks.util;
 
 import io.github.joffrey4.compressedblocks.block.RegisterBlocks;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class EnumSwitch {
@@ -99,6 +100,13 @@ public class EnumSwitch {
             default:
                 return new ItemStack(Material.AIR);
         }
+    }
+
+    public ItemStack getCraftedCompressedBlocks(Player player) {
+        if (player.hasPermission("compressedblocks.compress." + compressedBlock.getName())) {
+            return getCompressedBlock();
+        }
+        return new ItemStack(Material.AIR);
     }
 
     public ItemStack getAmountCompressedBlock(int amount) {
