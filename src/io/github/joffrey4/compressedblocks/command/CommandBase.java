@@ -4,16 +4,15 @@ import io.github.joffrey4.compressedblocks.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Objects;
 
 public class CommandBase implements CommandExecutor {
 
-    FileConfiguration config;
+    Main plugin;
 
     public CommandBase(Main plugin) {
-        this.config = plugin.getConfig();
+        this.plugin = plugin;
     }
 
     @Override
@@ -24,13 +23,14 @@ public class CommandBase implements CommandExecutor {
                 commandSender.sendMessage("Lack of permission: compressedblocks.command.give");
                 return true;
             }
-            return new CommandGive(config, commandSender, strings).executeCommand();
+            return new CommandGive(plugin.getConfig(), commandSender, strings).executeCommand();
 
-        } else if (strings.length > 0 && Objects.equals(strings[0], "info")) {
+        } else if (strings.length == 1 && Objects.equals(strings[0], "info")) {
             if (!commandSender.hasPermission("compressedblocks.command.info")) {
                 commandSender.sendMessage("Lack of permission: compressedblocks.command.info");
                 return true;
             }
+            return new CommandInfo(plugin, commandSender).executeCommand();
         }
         return false;
     }
