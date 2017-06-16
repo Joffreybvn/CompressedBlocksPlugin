@@ -1,7 +1,7 @@
 # ======================================================
 # <             Compressed Blocks Plugin:              >
 # <                 Configuration File                 >
-# <             Docs: https://jbvn.me/cbp/             >
+# <             Docs: https://cbp.jbvn.me              >
 # ======================================================
 
 # This configuration file was generated in version 2.0
@@ -13,7 +13,7 @@
 # -------------------------------------------------------
 # WARNING: Do not edit the lores if you have already setup a server, and compressed some blocks.
 # The newly compressed blocks (with the new lore) will not be stackable with the old ones.
-# Information about how to edit a lore: https://jbvn.me/cbp/
+# Information about how to edit a lore: https://cbp.jbvn.me
 
 lore:
   usecommon: true
@@ -22,26 +22,39 @@ lore:
     - '9x &type !'
 
   detailed:
+
+#   WOODS:
     oakwood:
-      - 'Another lore specific'
-      - 'to the &type !'
+    sprucewood:
+    birchwood:
+    junglewood:
+    acaciawood:
+    darkoakwood:
 
+#   PLANKS:
+    oakplank:
+    spruceplank:
+    birchplank:
+    jungleplank:
+    acaciaplank:
+    darkoakplank:
 
-#   Wood:
-#     - 'Another lore specific'
-#     - 'to the &type !'
-#   Plank:
-#   Gravel:
-#   Sand:
-#   RedSand
-#   Stone:
-#   Granite:
-#   Diorite:
-#   Andesite:
-#   Dirt:
-#   Cobblestone:
-#   SoulSand:
-#   Netherrack:
+#   FALLING Blocks:
+    gravel:
+    sand:
+    redsand:
+
+#   STONE Blocks:
+    stone:
+    granite:
+    diorite:
+    andesite:
+
+#   OTHER Blocks:
+    dirt:
+    cobblestone:
+    soulsand:
+    netherrack:
 
 
 # -------------------------------------------------------
@@ -49,7 +62,7 @@ lore:
 # -------------------------------------------------------
 # WARNING: Do not edit the textures if you have already setup a server, and compressed some blocks.
 # Changing the texture will result in the lose of all compressed blocks previously made.
-# Information about how to edit a texture: https://jbvn.me/cbp/
+# Information about how to edit a texture: https://cbp.jbvn.me
 
 texture:
 # WOODS (LOGS)
