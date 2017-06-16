@@ -1,3 +1,11 @@
 language: java
 dist: trusty
 script: ant all
+
+deploy:
+  provider: releases
+  api_key: '$GITHUB_API_KEY'
+  file: "CompressedBlocksPlugin"
+  skip_cleanup: true
+  on:
+    tags: true
