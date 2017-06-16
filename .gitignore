@@ -86,3 +86,4 @@ Supprimerait CompressedBlocksPlugin.ipr
 Supprimerait CompressedBlocksPlugin.iws
 Supprimerait out/
 Supprimerait api/
+!/lib/spigot-1.11.2-R0.1-SNAPSHOT.jar
