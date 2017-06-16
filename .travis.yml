@@ -5,7 +5,7 @@ script: ant all
 deploy:
   provider: releases
   api_key: '$GITHUB_API_KEY'
-  file: "out/artifacts/CompressedBlocksPlugin.jar"
+  file: "out/artifacts/CompressedBlocksPlugin_jar"
   skip_cleanup: true
   on:
     tags: true
