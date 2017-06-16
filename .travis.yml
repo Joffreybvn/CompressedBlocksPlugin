@@ -5,7 +5,7 @@ script: ant all
 deploy:
   provider: releases
   api_key: '$GITHUB_API_KEY'
-  file: "CompressedBlocksPlugin.jar"
+  file: "/home/travis/build/Joffrey4/CompressedBlocksPlugin/out/artifacts/CompressedBlocksPlugin.jar"
   skip_cleanup: true
   on:
     tags: true
