@@ -1,11 +1,11 @@
 language: java
 dist: trusty
-script: ant all
+script: mvn CompressedBlocksPlugin -B
 
 deploy:
   provider: releases
   api_key: '$GITHUB_API_KEY'
-  file: "out/artifacts/CompressedBlocksPlugin_jar/CompressedBlocksPlugin.jar"
+  file: "out/artifacts/CompressedBlocksPlugin_jar/CompressedBlocksPlugin-$TRAVIS_TAG.jar"
   skip_cleanup: true
   on:
     tags: true
