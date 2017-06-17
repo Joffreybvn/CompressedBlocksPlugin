@@ -8,7 +8,8 @@ import org.bukkit.Material;
 import org.bukkit.SkullType;
 import org.bukkit.block.BlockState;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.craftbukkit.v1_11_R1.block.CraftSkull;
+import org.bukkit.craftbukkit.v1_12_R1.block.CraftSkull;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
