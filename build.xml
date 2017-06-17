@@ -55,8 +55,8 @@
   
   <!-- Project Libraries -->
   
-  <path id="library.spigot-1.11.2-r0.1-snapshot.classpath">
-    <pathelement location="${basedir}/lib/spigot-1.11.2-R0.1-SNAPSHOT.jar"/>
+  <path id="library.spigot-1.12-r0.1-snapshot.classpath">
+    <pathelement location="${basedir}/lib/spigot-1.12-R0.1-SNAPSHOT.jar"/>
   </path>
   
   <!-- Modules -->
@@ -78,23 +78,23 @@
   </path>
   
   <path id="compressedblocksplugin.module.production.classpath">
-    <path refid="library.spigot-1.11.2-r0.1-snapshot.classpath"/>
+    <path refid="library.spigot-1.12-r0.1-snapshot.classpath"/>
   </path>
   
   <path id="compressedblocksplugin.runtime.production.module.classpath">
     <pathelement location="${compressedblocksplugin.output.dir}"/>
-    <path refid="library.spigot-1.11.2-r0.1-snapshot.classpath"/>
+    <path refid="library.spigot-1.12-r0.1-snapshot.classpath"/>
   </path>
   
   <path id="compressedblocksplugin.module.classpath">
     <pathelement location="${compressedblocksplugin.output.dir}"/>
-    <path refid="library.spigot-1.11.2-r0.1-snapshot.classpath"/>
+    <path refid="library.spigot-1.12-r0.1-snapshot.classpath"/>
   </path>
   
   <path id="compressedblocksplugin.runtime.module.classpath">
     <pathelement location="${compressedblocksplugin.testoutput.dir}"/>
     <pathelement location="${compressedblocksplugin.output.dir}"/>
-    <path refid="library.spigot-1.11.2-r0.1-snapshot.classpath"/>
+    <path refid="library.spigot-1.12-r0.1-snapshot.classpath"/>
   </path>
   
   
