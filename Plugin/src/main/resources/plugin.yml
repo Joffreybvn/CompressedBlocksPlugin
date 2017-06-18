@@ -1,5 +1,5 @@
 name: CompressedBlocks
-version: 2.0
+version: '${project.version}'
 author: Joffrey4 aka NycoDiValones
 website: https://cbp.jbvn.me
 description: Save space in your chests by compressing your blocks !

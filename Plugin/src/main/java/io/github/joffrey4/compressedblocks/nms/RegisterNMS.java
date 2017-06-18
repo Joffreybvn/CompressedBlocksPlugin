@@ -15,8 +15,6 @@ public class RegisterNMS {
         String packageName = plugin.getServer().getClass().getPackage().getName();
         String version = packageName.substring(packageName.lastIndexOf('.') + 1);
 
-        System.out.print(version);
-
         try {
             final Class<?> clazz = Class.forName("io.github.joffrey4.compressedblocks.nms." + version + ".NMSHandler");
 

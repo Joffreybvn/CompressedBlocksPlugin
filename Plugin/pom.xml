@@ -6,7 +6,7 @@
 
     <groupId>io.github.joffrey4.compressedblocks</groupId>
     <artifactId>CompressedBlocksPlugin</artifactId>
-    <version>1.12-2.0.2</version> <!-- Version tracking from here -->
+    <version>2.1 pre1</version> <!-- Version tracking from here -->
 
     <packaging>jar</packaging>
     <name>CompressedBlocksPlugin</name>
@@ -22,7 +22,6 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-
 
     <dependencies>
         <dependency>
@@ -62,6 +61,17 @@
     <build>
         <directory>../target</directory>
         <finalName>CompressedBlocksPlugin</finalName>
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>plugin.yml</include>
+                    <include>config.yml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

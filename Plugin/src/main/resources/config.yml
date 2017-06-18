@@ -4,7 +4,7 @@
 # <             Docs: https://cbp.jbvn.me              >
 # ======================================================
 
-# This configuration file was generated in version 2.0
+# This configuration file was generated in version ${project.version}
 # Always use SPACE for indentation, instead of TAB.
 
 
