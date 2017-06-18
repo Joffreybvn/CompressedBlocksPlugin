@@ -6,7 +6,7 @@
 
     <groupId>io.github.joffrey4.compressedblocks</groupId>
     <artifactId>CompressedBlocksPlugin</artifactId>
-    <version>2.1 pre1</version> <!-- Version tracking from here -->
+    <version>2.1</version> <!-- Version tracking from here -->
 
     <packaging>jar</packaging>
     <name>CompressedBlocksPlugin</name>
