@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import io.github.joffrey4.compressedblocks.Main;
 import io.github.joffrey4.compressedblocks.util.Enum;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -39,11 +40,11 @@ public class BlockCompressed {
         BlockCompressed.typeName = typeName;
     }
 
-    public String setName(String name) {
+    private String setName(String name) {
         return name.replaceAll("\\s+","").toLowerCase();
     }
 
-    public String setDisplayName(String typeName) {
+    private String setDisplayName(String typeName) {
         return "Compressed " + typeName;
     }
 
@@ -94,11 +95,13 @@ public class BlockCompressed {
         }
 
         for (final ListIterator<String> i = lore.listIterator(); i.hasNext();) {
-            final String line = i.next();
+            String line = i.next();
 
             if (line.contains("&type")) {
-                i.set(line.replace("&type", typeName));
+                line = line.replace("&type", typeName);
             }
+            // Lore formatting personalisation from config
+            i.set(ChatColor.translateAlternateColorCodes('&', line));
         }
         return lore;
     }
