@@ -14,6 +14,7 @@ import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Objects;
 import java.util.UUID;
 
 public class BlockCompressed {
@@ -30,11 +31,11 @@ public class BlockCompressed {
         BlockCompressed.material = material;
         BlockCompressed.metadata = metadata;
 
-        // Name of the compressed block item (ex: Compressed Oak Wood)
-        BlockCompressed.displayname = setDisplayName(typeName);
-
         // Internal name of the compressed block (ex: oakwood)
         BlockCompressed.name = setName(typeName);
+
+        // Name of the compressed block item (ex: Compressed Oak Wood)
+        BlockCompressed.displayname = setDisplayName(typeName);
 
         // Name of the type of the block (ex: Oak Wood)
         BlockCompressed.typeName = typeName;
@@ -45,7 +46,19 @@ public class BlockCompressed {
     }
 
     private String setDisplayName(String typeName) {
-        return "Compressed " + typeName;
+        String displayName;
+
+        if (Objects.equals(config.getString(name + ".name"), "default")) {
+            displayName = config.getString("default.name");
+        } else {
+            displayName = config.getString(name + ".name");
+        }
+
+        if (displayName.contains("&type")) {
+            displayName = displayName.replace("&type", typeName);
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', displayName);
     }
 
     public ItemStack getItemStack() {
@@ -54,10 +67,10 @@ public class BlockCompressed {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
 
         String skinURL = "http://textures.minecraft.net/texture/";
-        if (config.getString("texture." + name).isEmpty()) {
+        if (config.getString(name + ".texture").isEmpty()) {
             return skull;
         } else {
-            skinURL += config.getString("texture." + name);
+            skinURL += config.getString(name + ".texture");
         }
 
         // Get the skull metadata and initialize a texture profile
@@ -88,10 +101,10 @@ public class BlockCompressed {
     public List<String> getLore() {
         List<String> lore;
 
-        if ((!config.getBoolean("lore.usecommon")) && (!config.getStringList("lore.detailed." + name).isEmpty())) {
-            lore = config.getStringList("lore.detailed." + name);
+        if (Objects.equals(config.getString(name + ".lore"), "default")) {
+            lore = config.getStringList("default.lore");
         } else {
-            lore = config.getStringList("lore.common");
+            lore = config.getStringList(name + ".lore");
         }
 
         for (final ListIterator<String> i = lore.listIterator(); i.hasNext();) {
@@ -100,7 +113,6 @@ public class BlockCompressed {
             if (line.contains("&type")) {
                 line = line.replace("&type", typeName);
             }
-            // Lore formatting personalisation from config
             i.set(ChatColor.translateAlternateColorCodes('&', line));
         }
         return lore;
